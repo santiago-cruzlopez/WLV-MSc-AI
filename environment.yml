@@ -1,7 +1,7 @@
 name: WLV-AI
 channels:
-  - conda-forge
   - defaults
+  - conda-forge
 dependencies:
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=5.1=1_gnu
@@ -238,7 +238,7 @@ dependencies:
   - python-flatbuffers=24.3.25=py310h06a4308_0
   - python-json-logger=4.0.0=py310h06a4308_0
   - python-tzdata=2025.3=pyhd3eb1b0_0
-  - python_abi=3.10=2_cp310
+  - python_abi=3.10=3_cp310
   - pytorch=2.7.0=cpu_mkl_py310hd43b509_101
   - pytz=2025.2=py310h06a4308_0
   - pyyaml=6.0.3=py310h591646f_0

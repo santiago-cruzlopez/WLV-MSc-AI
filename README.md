@@ -14,12 +14,12 @@ I will be using the following Python environment for my MSc in Artificial Intell
   sudo apt update && sudo apt upgrade
   sudo apt-get install -y build-essential pkg-config cmake make unzip yasm dkms git checkinstall libsdl2-dev libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev
   ```
-  - Install Anaconda
+  - Install Anaconda on Ubuntu 22.04 - [Instructions](https://www.geeksforgeeks.org/linux-unix/how-to-install-anaconda-on-ubuntu-20-04/):
   ```bash
-  wget https://repo.anaconda.com/archive/Anaconda3-latest-Linux-x86_64.sh -O Anaconda3-latest-Linux-x86_64.s
+  wget https://repo.anaconda.com/archive/Anaconda3-2025.12-1-Linux-x86_64.sh
   
   # Run the installer 
-  bash Anaconda3-latest-Linux-x86_64.sh
+  bash Anaconda3-2025.12-1-Linux-x86_64.sh
 
   # Verify Installation
   conda --version
