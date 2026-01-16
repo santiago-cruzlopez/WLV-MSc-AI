@@ -5,8 +5,8 @@ I will be using the following Python environment for my MSc in Artificial Intell
 - [Anaconda Documentation](https://www.anaconda.com/docs/main)
 
 ## Modules
-1. [7CS074/UZ2: Data Mining & Informatics](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/01_Data_Mining_%26_Informatics/W1_Intro_Data_Analysis)
-2. 7CS082/UZ3: Deep Machine Learning
+1. [7CS074/UZ2: Data Mining & Informatics](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/01_Data_Mining_%26_Informatics)
+2. [7CS082/UZ3: Deep Machine Learning](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/02_Deep_Machine_Learning)
 
 ## Core Installation Steps
 
