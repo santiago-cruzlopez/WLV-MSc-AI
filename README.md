@@ -39,10 +39,27 @@ I will be using the following Python environment for my MSc in Artificial Intell
 2. Python Environment Setup
   - Create the environment with Python 3.10 and common ML/data science libraries:
   ```bash
-  conda create -n WLV-AI python=3.10 numpy pandas matplotlib seaborn scikit-learn tensorflow pytorch jupyter ipykernel scipy -y
+  conda create -n WLV-AI python=3.10 numpy=1.26.4 pandas matplotlib seaborn scikit-learn pytorch jupyter ipykernel scipy -c pytorch -c conda-forge -y
 
   conda activate WLV-AI
+  
+  pip install kagglehub
+
+  # Install Jupyter kernel
+  python -m ipykernel install --user --name WLV-AI --display-name "WLV-AI"
+
   conda env export > environment.yml
 
   conda list
+  ```
+  - Install TensorFlow with GPU Support
+  ```bash
+  pip install --upgrade pip setuptools wheel
+  pip install 'tensorflow[and-cuda]==2.15.*'
+  pip install --upgrade absl-py  # Fixes Abseil symbol errors
+
+  # Verify TF Installation
+  import tensorflow as tf
+  print(tf.__version__)
+  print(tf.config.list_physical_devices('GPU'))
   ```
