@@ -63,3 +63,20 @@ I will be using the following Python environment for my MSc in Artificial Intell
   print(tf.__version__)
   print(tf.config.list_physical_devices('GPU'))
   ```
+  - Creating a TensorFlow GPU Environment
+  ```bash
+  conda create -n WLV-TF python=3.10 -y
+
+  conda activate WLV-TF
+
+  conda install numpy=1.26.4 pandas matplotlib seaborn scikit-learn scipy jupyter ipykernel -y
+
+  pip install --upgrade pip setuptools wheel
+  pip install 'tensorflow[and-cuda]==2.15.*'
+  pip install --upgrade absl-py
+
+  python -m ipykernel install --user --name WLV-TF --display-name "WLV-TF"
+
+  # Verify GPU 
+  python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+  ```
