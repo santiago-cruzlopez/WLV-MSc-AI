@@ -7,6 +7,10 @@ I will be using the following Python environment for my MSc in Artificial Intell
 ## Modules
 1. [7CS074/UZ2: Data Mining & Informatics](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/01_Data_Mining_%26_Informatics)
 2. [7CS082/UZ3: Deep Machine Learning](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/02_Deep_Machine_Learning)
+3. [7CS083/UZ2:Intelligent Agents](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/03_Intelligent_Agents)
+4. [7CS075/UZ1: Research Methods](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/04_Research_Methods)
+5. [7CS084/UZ2: Applying Artificial Intelligence](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/05_Applying_Artificial_Intelligence)
+6. [7CS071/UZ1: Virtualization and Cloud Computing](https://github.com/santiago-cruzlopez/WLV-MSc-AI/tree/master/06_Cloud_Computing)
 
 ## Core Installation Steps
 
