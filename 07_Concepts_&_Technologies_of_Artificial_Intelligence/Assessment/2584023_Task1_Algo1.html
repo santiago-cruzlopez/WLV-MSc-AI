@@ -7809,12 +7809,11 @@ a.anchor-link {
 <li><strong>Task:</strong> Predict next-day return for <code>ORCL</code> using Linear Regression.</li>
 </ul>
 <p><strong>Approach.</strong> Today's technical indicators (momentum, volatility, distance from moving averages)
-are used to try to predict tomorrow's percentage return. The model is trained and evaluated on a
-strictly chronological (never shuffled) train/test split. Every claim below is backed by a
-printed metric, a table, or a chart produced in this notebook.</p>
-<p>A second, independent notebook (2584023_Task1_Algo2.ipynb) applies a Random Forest Regressor
-to the identical problem; the written report compares both. Full referenced discussion is in the
-accompanying written report - this notebook is the working code only.</p>
+predict tomorrow's percentage return. Trained and evaluated on a chronological, never-shuffled
+split. Every claim below is backed by a printed metric, table, or chart in this notebook.</p>
+<p>A second, independent notebook (2584023_Task1_Algo2.ipynb) applies a Random Forest Regressor to
+the same problem; the written report compares both. This notebook is working code only - full
+discussion is in the report.</p>
 </div>
 </div>
 </div>
@@ -7823,7 +7822,7 @@ accompanying written report - this notebook is the working code only.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
@@ -7862,13 +7861,10 @@ accompanying written report - this notebook is the working code only.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.-Load-and-Clean-the-Data">1. Load and Clean the Data<a class="anchor-link" href="#1.-Load-and-Clean-the-Data">¶</a></h3><p>We load the daily OHLC (open/high/low/close) price history for Oracle Corporation (<code>ORCL</code>),
-together with several technical indicators TradingView pre-computes for us (moving averages at
-six different window lengths, the Relative Strength Index, and the True Strength Index). The
-<code>time</code> column is converted to a proper datetime index so the data can be sorted chronologically
-and later split into a training period and a testing period without gaps or duplicates. Every
-price/indicator column is explicitly coerced to a numeric type, since CSV exports sometimes read
-numeric columns as text if a single row contains a stray character.</p>
+<h3 id="1.-Load-and-Clean-the-Data">1. Load and Clean the Data<a class="anchor-link" href="#1.-Load-and-Clean-the-Data">¶</a></h3><p>We load <code>ORCL</code>'s daily OHLC prices and TradingView's pre-computed indicators (moving averages,
+RSI, TSI). The <code>time</code> column becomes a proper datetime index so the data sorts cleanly and splits
+without gaps. Every price/indicator column is coerced to numeric, since CSV exports sometimes
+store numbers as text.</p>
 </div>
 </div>
 </div>
@@ -7877,7 +7873,7 @@ numeric columns as text if a single row contains a stray character.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load the ORCL daily OHLC + indicator export</span>
@@ -7910,7 +7906,7 @@ numeric columns as text if a single row contains a stray character.</p>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8091,11 +8087,9 @@ numeric columns as text if a single row contains a stray character.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="1.1-Price-History-(Context)">1.1 Price History (Context)<a class="anchor-link" href="#1.1-Price-History-(Context)">¶</a></h4><p>Before building any model, it is worth looking at what we are actually working with: <code>ORCL</code>'s
-close price has grown from a few cents in 1986 (after stock splits are accounted for) to over
-$300 at points in 2026 - a very different kind of series to predict than, say, a stationary
-sensor reading. This chart, and the descriptive statistics table beneath it, give a first sense
-of the data's scale and spread before we engineer anything from it.</p>
+<h4 id="1.1-Price-History-(Context)">1.1 Price History (Context)<a class="anchor-link" href="#1.1-Price-History-(Context)">¶</a></h4><p><code>ORCL</code>'s close price has grown from a few cents in 1986 to over $300 at points in 2026 - a far
+less stable series than a typical sensor reading. This chart and the stats table below show that
+scale before we engineer anything from it.</p>
 </div>
 </div>
 </div>
@@ -8104,7 +8098,7 @@ of the data's scale and spread before we engineer anything from it.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -8140,7 +8134,7 @@ of the data's scale and spread before we engineer anything from it.</p>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8237,25 +8231,18 @@ of the data's scale and spread before we engineer anything from it.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.-Feature-Engineering">2. Feature Engineering<a class="anchor-link" href="#2.-Feature-Engineering">¶</a></h3><p>Eight features are built from information available at the close of "today" (day <em>t</em>), so
-nothing here uses information from the future:</p>
+<h3 id="2.-Feature-Engineering">2. Feature Engineering<a class="anchor-link" href="#2.-Feature-Engineering">¶</a></h3><p>Eight features, all built from information available at the close of "today" (day <em>t</em>):</p>
 <ul>
 <li><code>return_1d</code> - today's percentage price change, a simple momentum signal.</li>
-<li><code>volatility_10d</code> - the rolling standard deviation of the last 10 daily returns, a measure of
-how turbulent the last two trading weeks have been.</li>
-<li><code>dist_sma21</code>, <code>dist_sma63</code>, <code>dist_sma252</code> - how far today's close sits above or below its
-21-, 63- and 252-day moving averages (roughly 1 month, 1 quarter, and 1 year), expressed as a
-percentage. These describe short-, medium- and long-term trend position.</li>
-<li><code>rsi</code>, <code>tsi</code>, <code>tsi_signal</code> - the Relative Strength Index and True Strength Index momentum
-oscillators, already computed in the source data.</li>
+<li><code>volatility_10d</code> - rolling standard deviation of the last 10 daily returns.</li>
+<li><code>dist_sma21</code>, <code>dist_sma63</code>, <code>dist_sma252</code> - percentage distance of today's close from its 21-,
+63- and 252-day moving averages (short/medium/long-term trend position).</li>
+<li><code>rsi</code>, <code>tsi</code>, <code>tsi_signal</code> - the Relative Strength Index and True Strength Index oscillators.</li>
 </ul>
-<p>The <strong>target</strong>, <code>target_next_return</code>, is tomorrow's percentage return (<code>close</code> shifted one row
-into the past relative to today's features), not tomorrow's raw closing <em>price</em>. This matters:
-a raw price series drifts upward over decades (it is "non-stationary" - its average level keeps
-changing), which makes it a poor, moving-goalpost target for a model. A return is bounded,
-fluctuates around a roughly stable mean regardless of what year it is, and is the metric a
-trader or investor actually cares about, which makes it both the statistically sounder and the
-practically more meaningful choice of target.</p>
+<p>The <strong>target</strong>, <code>target_next_return</code>, is tomorrow's percentage return, not tomorrow's price.
+Price drifts upward over decades (it's non-stationary), a moving goalpost for a model. Returns
+stay bounded around a stable mean and are what a trader actually cares about - the sounder and
+more useful choice of target.</p>
 </div>
 </div>
 </div>
@@ -8264,7 +8251,7 @@ practically more meaningful choice of target.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">orcl_1d_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -8304,7 +8291,7 @@ practically more meaningful choice of target.</p>
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8422,12 +8409,9 @@ practically more meaningful choice of target.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="2.1-Feature-&amp;-Target-Distributions">2.1 Feature &amp; Target Distributions<a class="anchor-link" href="#2.1-Feature-&amp;-Target-Distributions">¶</a></h4><p>Two checks before modelling: are the engineered features and the target sensibly scaled and
-distributed (no extreme outliers from a division-by-zero or similar bug), and what does the
-target itself look like? The histogram below answers the second question directly - if
-<code>target_next_return</code> turns out to be tightly and symmetrically clustered around zero, that is
-itself an early hint that predicting its exact value will be difficult, which is worth knowing
-before training any model.</p>
+<h4 id="2.1-Feature-&amp;-Target-Distributions">2.1 Feature &amp; Target Distributions<a class="anchor-link" href="#2.1-Feature-&amp;-Target-Distributions">¶</a></h4><p>Two checks before modelling: are the features and target sensibly scaled (no outliers from a
+bug), and what does the target look like? If <code>target_next_return</code> clusters tightly around zero,
+that's an early sign it will be hard to predict exactly.</p>
 </div>
 </div>
 </div>
@@ -8436,11 +8420,13 @@ before training any model.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Descriptive statistics (features + target):'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'target_next_return'</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Descriptive statistics (features + target):'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'target_next_return'</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'target_next_return'</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'#3498db'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
@@ -8463,26 +8449,141 @@ before training any model.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Descriptive statistics (features + target):
-       return_1d  volatility_10d  dist_sma21  dist_sma63  dist_sma252  \
-count  9933.0000       9933.0000   9933.0000   9933.0000    9933.0000   
-mean      0.0011          0.0244      0.0082      0.0266       0.1175   
-std       0.0292          0.0164      0.0683      0.1212       0.2756   
-min      -0.2915          0.0029     -0.4473     -0.6132      -0.7173   
-25%      -0.0122          0.0130     -0.0247     -0.0328      -0.0180   
-50%       0.0000          0.0203      0.0084      0.0276       0.0886   
-75%       0.0132          0.0319      0.0416      0.0841       0.2158   
-max       0.4387          0.1474      0.3807      0.7117       1.8948   
-
-             rsi        tsi  tsi_signal  target_next_return  
-count  9933.0000  9933.0000   9933.0000           9933.0000  
-mean     52.5878     5.3595      5.3898              0.0011  
-std       8.4992    19.2079     17.2854              0.0292  
-min      24.4961   -54.0661    -50.3929             -0.2915  
-25%      46.6007    -8.0572     -6.6211             -0.0122  
-50%      52.9122     6.0231      6.0957              0.0000  
-75%      58.5070    19.3731     17.7992              0.0132  
-max      83.1228    67.8629     56.7686              0.4387  
 </pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>return_1d</th>
+<th>volatility_10d</th>
+<th>dist_sma21</th>
+<th>dist_sma63</th>
+<th>dist_sma252</th>
+<th>rsi</th>
+<th>tsi</th>
+<th>tsi_signal</th>
+<th>target_next_return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>count</th>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+<td>9933.0000</td>
+</tr>
+<tr>
+<th>mean</th>
+<td>0.0011</td>
+<td>0.0244</td>
+<td>0.0082</td>
+<td>0.0266</td>
+<td>0.1175</td>
+<td>52.5878</td>
+<td>5.3595</td>
+<td>5.3898</td>
+<td>0.0011</td>
+</tr>
+<tr>
+<th>std</th>
+<td>0.0292</td>
+<td>0.0164</td>
+<td>0.0683</td>
+<td>0.1212</td>
+<td>0.2756</td>
+<td>8.4992</td>
+<td>19.2079</td>
+<td>17.2854</td>
+<td>0.0292</td>
+</tr>
+<tr>
+<th>min</th>
+<td>-0.2915</td>
+<td>0.0029</td>
+<td>-0.4473</td>
+<td>-0.6132</td>
+<td>-0.7173</td>
+<td>24.4961</td>
+<td>-54.0661</td>
+<td>-50.3929</td>
+<td>-0.2915</td>
+</tr>
+<tr>
+<th>25%</th>
+<td>-0.0122</td>
+<td>0.0130</td>
+<td>-0.0247</td>
+<td>-0.0328</td>
+<td>-0.0180</td>
+<td>46.6007</td>
+<td>-8.0572</td>
+<td>-6.6211</td>
+<td>-0.0122</td>
+</tr>
+<tr>
+<th>50%</th>
+<td>0.0000</td>
+<td>0.0203</td>
+<td>0.0084</td>
+<td>0.0276</td>
+<td>0.0886</td>
+<td>52.9122</td>
+<td>6.0231</td>
+<td>6.0957</td>
+<td>0.0000</td>
+</tr>
+<tr>
+<th>75%</th>
+<td>0.0132</td>
+<td>0.0319</td>
+<td>0.0416</td>
+<td>0.0841</td>
+<td>0.2158</td>
+<td>58.5070</td>
+<td>19.3731</td>
+<td>17.7992</td>
+<td>0.0132</td>
+</tr>
+<tr>
+<th>max</th>
+<td>0.4387</td>
+<td>0.1474</td>
+<td>0.3807</td>
+<td>0.7117</td>
+<td>1.8948</td>
+<td>83.1228</td>
+<td>67.8629</td>
+<td>56.7686</td>
+<td>0.4387</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -8500,13 +8601,10 @@ max      83.1228    67.8629     56.7686              0.4387
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.-Quick-Visual-Check:-Which-Features-Actually-Relate-to-the-Target?">3. Quick Visual Check: Which Features Actually Relate to the Target?<a class="anchor-link" href="#3.-Quick-Visual-Check:-Which-Features-Actually-Relate-to-the-Target?">¶</a></h3><p>A correlation heatmap before modelling tells us two separate things at once: which features (if
-any) have a linear relationship with the target worth exploiting, and which features are
-strongly correlated <em>with each other</em> (a problem called multicollinearity, examined in Section
-3.1 below). Correlation values range from -1 (perfect inverse relationship) to +1 (perfect
-direct relationship); values close to 0 mean no linear relationship. This step directly informs
-the "how would you improve the model" discussion required in the written report - a feature that
-shows essentially no correlation with the target is a candidate to simplify away.</p>
+<h3 id="3.-Quick-Visual-Check:-Which-Features-Actually-Relate-to-the-Target?">3. Quick Visual Check: Which Features Actually Relate to the Target?<a class="anchor-link" href="#3.-Quick-Visual-Check:-Which-Features-Actually-Relate-to-the-Target?">¶</a></h3><p>A correlation heatmap does two jobs at once: shows which features (if any) relate to the target,
+and which relate to each other (multicollinearity, Section 3.1). Values near 0 mean no linear
+relationship - a feature with none is a candidate to drop, feeding directly into the report's
+improvement discussion.</p>
 </div>
 </div>
 </div>
@@ -8515,7 +8613,7 @@ shows essentially no correlation with the target is a candidate to simplify away
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -8565,7 +8663,7 @@ Name: target_next_return, dtype: float64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">top_feature</span> <span class="o">=</span> <span class="n">corr</span><span class="p">[</span><span class="s1">'target_next_return'</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'target_next_return'</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
@@ -8611,14 +8709,10 @@ a near-vertical cloud of points with no visible slope, consistent with the near-
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="3.1-Checking-for-Multicollinearity-Among-Features">3.1 Checking for Multicollinearity Among Features<a class="anchor-link" href="#3.1-Checking-for-Multicollinearity-Among-Features">¶</a></h4><p>The heatmap above also shows correlations <em>between</em> features, not just against the target. If
-two features are highly correlated with each other (a common rule of thumb is |r| &gt; 0.7), they
-carry largely duplicate information: including both adds redundancy without adding real
-predictive power, and for Linear Regression specifically, strong multicollinearity can make the
-estimated coefficients unstable (small changes in the data can swing them substantially), even
-though it does not by itself change the model's predictions or R^2 (Hastie, Tibshirani and
-Friedman, 2009). The table below lists every feature pair with |correlation| above 0.5, so any
-redundancy is stated explicitly rather than left implicit in the heatmap.</p>
+<h4 id="3.1-Checking-for-Multicollinearity-Among-Features">3.1 Checking for Multicollinearity Among Features<a class="anchor-link" href="#3.1-Checking-for-Multicollinearity-Among-Features">¶</a></h4><p>The heatmap above also shows correlation <em>between</em> features. Two features correlated above
+~0.7 carry mostly duplicate information - redundant, and for Linear Regression specifically, a
+source of unstable coefficients, though not a worse fit or R^2 (Hastie, Tibshirani and Friedman,
+2009). The table below lists every pair above 0.5 explicitly.</p>
 </div>
 </div>
 </div>
@@ -8627,7 +8721,7 @@ redundancy is stated explicitly rather than left implicit in the heatmap.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">feature_corr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -8674,7 +8768,7 @@ dtype: float64
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -8807,14 +8901,9 @@ dtype: float64
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="4.-Train/Test-Split">4. Train/Test Split<a class="anchor-link" href="#4.-Train/Test-Split">¶</a></h3><p>The data is split <strong>chronologically</strong> - the first 80% of rows (by date) become the training set
-and the final 20% become the test set - rather than with a random 80/20 split. This is
-deliberate: <code>ORCL</code>'s daily prices are a time series, and a random split would place some training
-examples <em>after</em> some test examples in real time. A model could then implicitly "see the future"
-relative to a test day (for example, its rolling-average features would be computed using data
-from days that, in the real world, had not happened yet relative to that test day), which would
-overstate how well the model would actually perform if deployed and used to predict tomorrow
-without already knowing tomorrow's neighbours. A chronological split closes that gap entirely.</p>
+<h3 id="4.-Train/Test-Split">4. Train/Test Split<a class="anchor-link" href="#4.-Train/Test-Split">¶</a></h3><p>Split <strong>chronologically</strong> - the first 80% of dates train, the last 20% test - never randomly.
+<code>ORCL</code>'s prices are a time series; a random split would let the model train on days after some
+test days, effectively seeing the future. A chronological split rules that out.</p>
 </div>
 </div>
 </div>
@@ -8823,7 +8912,7 @@ without already knowing tomorrow's neighbours. A chronological split closes that
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
@@ -8861,13 +8950,10 @@ Test:  2018-09-24 to 2026-08-20 (1987 rows)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="5.-Algorithm:-Linear-Regression">5. Algorithm: Linear Regression<a class="anchor-link" href="#5.-Algorithm:-Linear-Regression">¶</a></h3><p>Linear Regression models the target as a weighted sum of the input features plus a constant
-(the intercept): <code>y = b0 + b1*x1 + b2*x2 + ... + bn*xn</code>. The weights (<code>coef_</code> below) are chosen
-to minimise the sum of squared errors between the model's predictions and the actual training
-values - the "ordinary least squares" criterion (James et al., 2023). It is the simplest possible
-regression model and is used here as an interpretable baseline: each coefficient tells us,
-holding every other feature fixed, how much the predicted next-day return changes for a one-unit
-change in that feature.</p>
+<h3 id="5.-Algorithm:-Linear-Regression">5. Algorithm: Linear Regression<a class="anchor-link" href="#5.-Algorithm:-Linear-Regression">¶</a></h3><p>Linear Regression models the target as a weighted sum of the features plus a constant:
+<code>y = b0 + b1*x1 + ... + b8*x8</code>, with weights chosen to minimise squared error - ordinary least
+squares (James et al., 2023). Used here as an interpretable baseline: each coefficient shows how
+much the predicted return moves per unit change in that feature, other features held fixed.</p>
 </div>
 </div>
 </div>
@@ -8876,7 +8962,7 @@ change in that feature.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
@@ -8928,9 +9014,9 @@ Linear Regression -&gt; MAE: 0.01538 | RMSE: 0.02465 | R2: -0.00403
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="5.1-Residual-Diagnostics">5.1 Residual Diagnostics<a class="anchor-link" href="#5.1-Residual-Diagnostics">¶</a></h4><p>A well-specified model should show residuals scattered randomly around zero with no funnel shape
-(non-constant spread would indicate heteroscedasticity) and a roughly bell-shaped residual
-histogram; strong patterns here would suggest the model is missing structure in the data.</p>
+<h4 id="5.1-Residual-Diagnostics">5.1 Residual Diagnostics<a class="anchor-link" href="#5.1-Residual-Diagnostics">¶</a></h4><p>A well-specified model shows residuals scattered randomly around zero, no funnel shape, and a
+roughly bell-shaped histogram. Strong patterns instead would mean the model is missing real
+structure.</p>
 </div>
 </div>
 </div>
@@ -8939,7 +9025,7 @@ histogram; strong patterns here would suggest the model is missing structure in 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">linreg_residuals</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">linreg_pred</span>
@@ -8989,9 +9075,8 @@ histogram; strong patterns here would suggest the model is missing structure in 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="6.-Actual-vs.-Predicted">6. Actual vs. Predicted<a class="anchor-link" href="#6.-Actual-vs.-Predicted">¶</a></h3><p>Plotting predictions directly against the actual next-day returns over the test period, in time
-order, shows whether the model's predicted line tracks the real, noisy movement of
-<code>target_next_return</code> at all, rather than relying only on the summary metrics above.</p>
+<h3 id="6.-Actual-vs.-Predicted">6. Actual vs. Predicted<a class="anchor-link" href="#6.-Actual-vs.-Predicted">¶</a></h3><p>Plotting predictions against actual next-day returns, in time order, shows whether the model
+tracks real movement at all - not just whether its summary metrics look decent.</p>
 </div>
 </div>
 </div>
@@ -9000,7 +9085,7 @@ order, shows whether the model's predicted line tracks the real, noisy movement 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -9052,9 +9137,9 @@ order, shows whether the model's predicted line tracks the real, noisy movement 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="7.-RSI-Deep-Dive-(Algorithm-Specific-View)">7. RSI Deep-Dive (Algorithm-Specific View)<a class="anchor-link" href="#7.-RSI-Deep-Dive-(Algorithm-Specific-View)">¶</a></h3><p>Linear Regression's own coefficient table in Section 5 already states how much weight the model
-puts on <code>rsi</code>; this section visualises the raw indicator directly so that number can be read
-against what RSI actually looks like day to day, rather than as an abstract figure on its own.</p>
+<h3 id="7.-RSI-Deep-Dive-(Algorithm-Specific-View)">7. RSI Deep-Dive (Algorithm-Specific View)<a class="anchor-link" href="#7.-RSI-Deep-Dive-(Algorithm-Specific-View)">¶</a></h3><p>Section 5's coefficient table already states how much weight the model puts on <code>rsi</code>. This plots
+the raw indicator directly, so that number can be read against what RSI actually looks like day
+to day.</p>
 </div>
 </div>
 </div>
@@ -9063,7 +9148,7 @@ against what RSI actually looks like day to day, rather than as an abstract figu
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">recent_window</span> <span class="o">=</span> <span class="n">orcl_1d_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">orcl_1d_data</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">orcl_1d_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
@@ -9123,10 +9208,9 @@ coefficient above is the model correctly learning that this swing carries little
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="8.-Cross-Validated-Performance-(More-Robust-Than-a-Single-Split)">8. Cross-Validated Performance (More Robust Than a Single Split)<a class="anchor-link" href="#8.-Cross-Validated-Performance-(More-Robust-Than-a-Single-Split)">¶</a></h3><p>A single 80/20 split gives one estimate of test performance, which can be noisy - the model might
-happen to look better or worse purely because of which specific days ended up in the test set.
-<code>TimeSeriesSplit</code> creates 5 successive, still-chronological train/test folds, and we average the
-error across all 5 - a more reliable estimate than the single split above.</p>
+<h3 id="8.-Cross-Validated-Performance-(More-Robust-Than-a-Single-Split)">8. Cross-Validated Performance (More Robust Than a Single Split)<a class="anchor-link" href="#8.-Cross-Validated-Performance-(More-Robust-Than-a-Single-Split)">¶</a></h3><p>A single 80/20 split gives one noisy estimate - the model might look better or worse purely by
+chance. <code>TimeSeriesSplit</code> runs 5 chronological folds and averages the error, a more reliable
+comparison than one split.</p>
 </div>
 </div>
 </div>
@@ -9135,7 +9219,7 @@ error across all 5 - a more reliable estimate than the single split above.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
@@ -9184,15 +9268,12 @@ Mean CV RMSE: 0.02547 (std 0.00797)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h3><p>On the held-out test set, Linear Regression achieves MAE = 0.01538, RMSE = 0.02465 and R2 =
--0.00403 - a negative R2 means the model performs <em>worse</em> than simply predicting the historical
-average return every day. Section 3's correlation heatmap shows every feature has a near-zero
-relationship with the target, which is the data-level cause of this result rather than an
-implementation issue; Section 7's RSI deep-dive shows the model's near-zero <code>rsi</code> coefficient is
-consistent with that indicator's visibly frequent overbought/oversold cycles carrying no
-exploitable linear signal. See the accompanying written report (Task 1) for the full comparison
-against the Random Forest Regressor in 2584023_Task1_Algo2.ipynb, references, and suggested
-improvements.</p>
+<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h3><p>On the test set, Linear Regression scores MAE = 0.01538, RMSE = 0.02465, R2 = -0.00403 - a
+negative R2 means it is worse than just predicting the average return every day. Section 3's
+heatmap shows every feature has near-zero correlation with the target, the real cause; Section
+7's RSI plot shows the model's near-zero <code>rsi</code> coefficient matches that indicator's frequent,
+unexploited overbought/oversold swings. Full comparison against the Random Forest Regressor
+(2584023_Task1_Algo2.ipynb), references, and improvement suggestions are in the written report.</p>
 </div>
 </div>
 </div>
