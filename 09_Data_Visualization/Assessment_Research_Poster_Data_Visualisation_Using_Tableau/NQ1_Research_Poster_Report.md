@@ -305,14 +305,14 @@ Connect to `NQ_clean_for_tableau.csv` (Text file). Set `Date` to Date, and `Tren
 | Field | Tableau formula |
 |---|---|
 | Log Return (TC) | `LN(SUM([Close]) / LOOKUP(SUM([Close]), -1))` |
-| MA 252 (TC) | `WINDOW_AVG(SUM([Close]), -251, 0)` |
+| MA 252 (TC) | `IF INDEX() >= 252 THEN WINDOW_AVG(SUM([Close]), -251, 0) END` |
 | Drawdown (TC) | `SUM([Close]) / RUNNING_MAX(SUM([Close])) - 1` |
 | Rolling Vol 21d (TC) | `WINDOW_STDEV([Log Return (TC)], -20, 0) * SQRT(252)` |
 | Daily Range % | `([High] - [Low]) / [Close]` (filter `[Data_Flag] = ""`) |
-| Regime | `IF [Close] > [MA_252] THEN "Above 252-day MA" ELSE "Below 252-day MA" END` |
+| Regime | `IF ISNULL([MA 252]) THEN "n/a" ELSEIF [Close] > [MA 252] THEN "Above 252-day MA" ELSE "Below 252-day MA" END` |
 | Year-End Close (LOD) | `{FIXED YEAR([Date]) : MAX(IF [Date] = {FIXED YEAR([Date]) : MAX([Date])} THEN [Close] END)}` |
 | Annual Return | `MIN([Year-End Close (LOD)])` with Quick Table Calculation → Percent Difference |
-| Partial-year flag | `IF YEAR([Date]) = 1999 OR YEAR([Date]) = 2026 THEN "Partial" ELSE "Full" END` (use on Opacity) |
+| Partial-year flag | `IF YEAR([Date]) = 1999 OR YEAR([Date]) = 2026 THEN "Partial" ELSE "Full" END` (use on Detail, or annotate the two part-years) |
 | Return bins | Right-click `Log_Return` → Create → Bins, size 0.0025 |
 | Above-stress flag | `[Rolling_Vol_21d_Ann] > 0.40` (colour the area) |
 

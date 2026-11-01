@@ -49,7 +49,7 @@ Menu names can differ slightly between the browser and Desktop versions. The ste
 
 ## Step 2. Gather the four data files
 
-All four are in your assessment folder and are produced by `NQ1_Poster_Analysis.ipynb`:
+All four are in the `spreadsheets_assessment/` folder and are produced by `NQ1_Poster_Analysis.ipynb`:
 
 | File | Used for | Rows |
 |---|---|---|
@@ -94,69 +94,227 @@ If you work on another computer, copy these four files to it (USB stick, email o
 
 ---
 
-## Step 5. Build the six charts
+## Step 5. Build the six charts (explained simply)
 
-Create one worksheet per chart. Right-click the sheet tab → **Rename** (V1, V2, …). After each chart, compare it with the matching reference image in `poster_visuals/`.
+This step explains every click, in plain words. Go slowly, one chart at a time. After each chart, compare it with the matching picture in `poster_visuals/`. Yours does not have to be identical, just close.
 
-### V1. Price trend with 252-day moving average (data: `NQ_clean_for_tableau`)
+> **Ready-made workbook or build it yourself?** `Tableau_Workbook/NQ1_Poster.twbx` already has the six
+> charts started. Building them yourself with this step is better: your poster says the measures were
+> built as **Tableau calculated fields**, and Step 5.2 is where you actually do that. You can open the
+> ready-made workbook beside yours to compare.
 
-1. Drag **Date** to **Columns** → right-click it → **Exact Date** → make sure it is **Continuous** (green).
-2. Drag **Close** to **Rows**.
-3. Drag **MA 252** onto the **left axis** of the chart (drop it when you see a double ruler icon). Both lines now share one axis, and Tableau adds *Measure Names* to Color.
-4. Marks card → choose **Line**.
-5. Right-click the y-axis → **Edit Axis** → tick **Logarithmic**. Set the title to *Futures price, index points (log scale)*.
-6. Click **Color** → **Edit Colors**: Close = blue, MA 252 = orange. Make the MA line thicker with **Size**.
-7. **Annotate** (Desktop: right-click a point → Annotate → Point): Mar 2000 peak, Oct 2002 trough (−83%), Nov 2008 low, Oct 2026 all-time high.
-8. Title: **E-mini Nasdaq-100: a 27-year climb from the dot-com peak, through two deep bear markets**
+### 5.1 The Tableau words you need
 
-### V2. Drawdown from previous high (data: `NQ_clean_for_tableau`)
+When you open a sheet, the screen looks roughly like this:
 
-1. **Date** → Columns (Exact Date, Continuous). **Drawdown** → Rows.
-2. Marks → **Area**. Color → red.
-3. Right-click the y-axis → **Edit Axis** → Fixed: start −1, end 0. Right-click the axis → **Format** → Numbers → **Percentage**, 0 decimals.
-4. Annotate: Dot-com bust −83% (regained Aug 2016), GFC −54%, COVID −28%, 2022 −35%, 2025 −23%.
-5. Title: **Drawdown from previous high: the March 2000 peak took 16 years to regain**
+```
+┌──────────────┬────────────────────────────────────────────────────┐
+│  DATA PANE   │  Columns  [ things here go LEFT → RIGHT ]          │
+│ (a list of   │  Rows     [ things here go BOTTOM → TOP ]          │
+│ your columns)├──────────────┬─────────────────────────────────────┤
+│              │  MARKS CARD  │                                     │
+│  Date        │  [Line    ▼] │                                     │
+│  Close       │  Color  Size │      YOUR CHART APPEARS HERE        │
+│  MA 252      │  Label Detail│                                     │
+│  ...         │  Tooltip     │                                     │
+└──────────────┴──────────────┴─────────────────────────────────────┘
+   [Data Source]  [V1 Price trend]  [V2 ...]   ← sheet tabs at the bottom
+```
 
-### V3. Calendar-year returns (data: `NQ_annual_returns`)
+| Word | What it means |
+|---|---|
+| **Data pane** | The list on the left. Every column of your CSV file is there. At the top it says **Data** and, next to it, **Analytics**. |
+| **Drag** | Click a field and **hold the mouse button down**, move it to the right place, then let go. |
+| **Shelf** | A strip where you drop fields: **Columns** (the left-to-right direction) and **Rows** (the up-and-down direction). |
+| **Pill** | When you drop a field on a shelf, it turns into a rounded box called a pill. Each pill has a small **▼ arrow** on its right; click it to change settings. |
+| **Blue pill / green pill** | **Blue = discrete**: separate boxes, like Lego bricks (years, names). **Green = continuous**: a smooth ruler, like a timeline or a number line. |
+| **Marks card** | The panel beside the chart. The drop-down at the top chooses the shape (Line, Bar, Area). The buttons (**Color, Size, Label, Detail**) are boxes you drop fields onto to colour or label the chart. |
+| **Axis** | The numbers along the side or bottom of a chart. Right-click them for **Edit Axis** and **Format**. |
+| **Calculated field** | A new column that Tableau works out from a formula, like a recipe for a calculator. |
+| **Sheet tab** | The tabs along the bottom. One sheet holds one chart. |
 
-1. **Year** → Columns (it must be a discrete, blue pill). **Annual Return** → Rows.
-2. Marks → **Bar**. Drag **Result** to **Color**: Gain = blue, Loss = red.
-3. Drag **Year Type** to **Opacity**, or to Color as a second step, so the partial years (1999 and 2026) look lighter. Alternatively, add "partial" and "YTD" as annotations.
-4. **Analytics** pane (tab next to Data) → drag **Reference Line** onto the chart → Scope: Entire Table → Value: **Full Year Return**, **Median** → Label: *median 17%*. Using `Full Year Return` excludes the partial years.
-5. Format the y-axis as a Percentage. Show labels only on 2003, 2008, 2022 and 2023: right-click a bar → Mark Label → Always Show.
-6. Title: **Calendar-year return: 20 of 26 full years positive, but losses cluster in runs**
+**Three golden rules:**
+1. Made a mistake? Press **Ctrl + Z** (undo). You can undo as many times as you like.
+2. Save often: **Ctrl + S**. Choose **Tableau Packaged Workbook (.twbx)** the first time.
+3. To make a new sheet, click the small **New Worksheet** icon at the bottom (it looks like a little chart with a +). To rename a sheet, right-click its tab → **Rename**.
 
-### V4. Rolling volatility (data: `NQ_clean_for_tableau`)
+**Colours you will use** (in the colour box, type these numbers in the Red, Green and Blue boxes):
 
-1. **Date** → Columns (Exact Date, Continuous). **Rolling Vol 21d Ann** → Rows. Marks → **Line**.
-2. Create a calculated field (Analysis → **Create Calculated Field**; browser: the dropdown next to Data → Create Calculated Field):
-   - Name: `Stress`
-   - Formula: `IF [Rolling Vol 21d Ann] > 0.40 THEN "Stress (above 90th pct)" ELSE "Normal" END`
-   - Drag **Stress** to **Color**: Normal = blue, Stress = orange.
-3. **Analytics** pane → **Reference Line** → Entire Table → Median → label *median 18%*.
-4. **Analytics** pane → **Distribution Band** or **Reference Line** → Percentile **90** → label *stress line (90th pct) 40%*.
-5. Format the y-axis as a Percentage. Annotate the peaks: 2000–02 99%, 2008 95%, 2020 90%, 2025 58%.
-6. Title: **Volatility clusters: calm regimes punctuated by short, violent storms**
+| Colour | Means | Red, Green, Blue | Hex |
+|---|---|---|---|
+| Blue | the market, "above the trend", gains | 42, 120, 214 | `#2a78d6` |
+| Orange | the reference line, "below the trend" | 235, 104, 52 | `#eb6834` |
+| Red | losses and drawdown | 208, 59, 59 | `#d03b3b` |
+| Grey | median lines and notes | 137, 135, 129 | `#898781` |
 
-### V5. Return distribution with normal curve (data: `NQ_return_histogram`)
+**Quick way to set a colour:** click **Color** on the Marks card → **Edit Colors…**. On the left, click the item, for example "Close". On the right, click any square. Then **double-click** the item on the left: a colour box opens where you can type the Red, Green and Blue numbers. Click **OK** twice. If there is only one colour (one line), click **Color** and pick the square in the little pop-up, or click **More Colors…** to type the numbers.
 
-1. **Return Bin Pct** → Columns. Right-click → make sure it is **Continuous** and a **Dimension**.
-2. **Observed Days** → Rows. Marks → **Bar**, blue, size small.
-3. Drag **Normal Expected Days** to Rows as well, to the right of Observed Days.
-4. Right-click the second pill → **Dual Axis**. Then right-click the right axis → **Synchronize Axis** → right-click again → untick **Show Header**. The two series now share one scale.
-5. On the Marks card for *Normal Expected Days*, choose **Line** and colour it orange.
-6. Right-click the y-axis → **Edit Axis** → **Logarithmic**, Fixed start 0.8. Title: *Number of days (log scale)*. X-axis title: *Daily log return (%)*.
-7. Add a text box or caption: *117 days beyond ±3 s.d. vs 19 expected; 47 beyond ±4 s.d. vs 0.4 expected; excess kurtosis 7.1.*
-8. Title: **Daily returns have fat tails: extreme days are far more common than a bell curve predicts**
+### 5.2 Make the calculated fields (do this once)
 
-### V6. Trend-regime scorecard (data: `NQ_regime_summary`)
+**What and why:** the CSV already contains the answers, which Python calculated. Here you make Tableau calculate them itself, so the sentence on your poster ("built as Tableau calculated fields") is true. You will use these fields in V1, V2 and V4.
 
-1. **Metric** → Columns, then **Regime** → Columns, to the right of Metric.
-2. **Value** → Rows. Marks → **Bar**. **Regime** → **Color**: Above = blue, Below = orange.
-3. **Value** → **Label**. Format the label and axis as a Percentage, 0 decimals. Then hide the y-axis: right-click → untick Show Header.
-4. The metric names start with 1–4, so they already sort in the right order.
-5. Caption under the chart, which you must keep: *Volatility gap statistically significant (p < 0.001); return gap not significant (p = 0.22) and reverses after 2013, so the 252-day line is a risk signal, not a return forecast.*
-6. Title: **Trend regimes: below its 252-day average, risk more than doubles and most crash days occur**
+**How to make one:**
+1. Make sure the data source at the top of the Data pane is **NQ_clean_for_tableau**.
+2. Top menu: **Analysis → Create Calculated Field…**
+3. A small window opens. In the **top box**, type the name. In the **big box**, type (or paste) the formula exactly as shown.
+4. Look at the bottom-left: it must say **"The calculation is valid."** If it shows red text, check the spelling and the brackets.
+5. Click **OK**. The new field appears in the Data pane with an **=** sign next to its icon.
+
+Make these six:
+
+| # | Name (top box) | Formula (big box) | In plain words |
+|---|---|---|---|
+| 1 | `Log Return (TC)` | `LN(SUM([Close]) / LOOKUP(SUM([Close]), -1))` | Today's price divided by yesterday's price. `LOOKUP(…, -1)` means "the row before me". |
+| 2 | `MA 252 (TC)` | `IF INDEX() >= 252 THEN WINDOW_AVG(SUM([Close]), -251, 0) END` | The average price of the last 252 trading days (about one year). It stays blank until there are 252 days to average. |
+| 3 | `Drawdown (TC)` | `SUM([Close]) / RUNNING_MAX(SUM([Close])) - 1` | How far today's price is below the highest price so far. `RUNNING_MAX` is "the record high up to today". |
+| 4 | `Rolling Vol 21d (TC)` | `WINDOW_STDEV([Log Return (TC)], -20, 0) * SQRT(252)` | How bumpy the last 21 days were, scaled to a year. Make field 1 first, because this one uses it. |
+| 5 | `Regime` | `IF ISNULL([MA 252]) THEN "n/a" ELSEIF [Close] > [MA 252] THEN "Above 252-day MA" ELSE "Below 252-day MA" END` | Is the price above or below its one-year average today? |
+| 6 | `Year-End Close (LOD)` | `{FIXED YEAR([Date]) : MAX(IF [Date] = {FIXED YEAR([Date]) : MAX([Date])} THEN [Close] END)}` | The last price of each year. The `{FIXED …}` part is an LOD expression: "for each year, find…". You will use it to check V3. |
+
+> **Why fields 1–4 need Date at day level:** they are *table calculations* (TC). They work along the
+> chart from left to right, one day at a time. They give the right answer only when **Date** is on
+> Columns as **Exact Date** and **Continuous** (a green pill that just says `Date`). Every recipe below
+> sets this up.
+
+### 5.3 The one setting you will use in V1, V2 and V4: "Date as a timeline"
+
+When you drop **Date** on Columns, Tableau groups it into years (`YEAR(Date)`, blue pill) and you get only 28 points. Change it like this:
+1. Click the **▼ arrow** on the `YEAR(Date)` pill.
+2. In the menu, click **Exact Date**.
+3. Click the **▼ arrow** again and click **Continuous**. The pill turns **green** and says just `Date`.
+
+---
+
+### V1. Price trend with 252-day moving average
+
+**What it shows:** the price over 27 years (blue), with its one-year average (orange) on top.
+**Data:** `NQ_clean_for_tableau`. **Picture to copy:** `poster_visuals/V1_price_trend_log_ma252.png`.
+
+1. Make a new sheet and rename it **V1 Price trend**.
+2. Drag **Date** to **Columns**, then make it a timeline (Step 5.3).
+3. Drag **Close** to **Rows**. A blue line appears. That's the price.
+4. Now add the average **on the same axis**. Drag **MA 252 (TC)** onto the **numbers on the left side** of the chart (the axis). Move it slowly until you see a little **double ruler** icon, then let go.
+   - It worked if the Rows shelf now says **Measure Values** and you see two lines.
+   - If you got two separate charts stacked on top of each other instead, press **Ctrl + Z** and try again, dropping exactly on the axis numbers.
+5. On the Marks card, set the drop-down to **Line**.
+6. **Colours:** **Color → Edit Colors…** → set **Close** to blue and **MA 252 (TC)** to orange (Step 5.1).
+7. **Make the average line thicker:** click **Size** and move the slider a little to the right.
+8. **Log scale** (each step up the axis is "×10", so early and late years are equally easy to read): right-click the left axis numbers → **Edit Axis…** → under *Scale* tick **Logarithmic**. In *Axis Titles* → Title, type `Futures price, index points (log scale)`. Close the window.
+9. **Bottom axis:** right-click the date axis → **Edit Axis…** → Title: delete the text (dates need no title).
+10. **Title:** double-click the title at the top of the sheet → select all the text → type: **E-mini Nasdaq-100: a 27-year climb from the dot-com peak, through two deep bear markets** → **OK**.
+11. **Notes on the chart (annotations):** hover over the line until the little tooltip shows the right date. Right-click that point → **Annotate → Point…** → type the note → **OK**. Then drag the note box to an empty spot. Add four notes:
+    - 24 Mar 2000 → `Mar 2000 peak`
+    - 9 Oct 2002 → `Oct 2002 trough (−83%)`
+    - Nov 2008 (the lowest point that year) → `Nov 2008 low`
+    - the last point → `Oct 2026 all-time high`
+12. **Check:** hover over the last point. Close should be **28,534** and MA 252 (TC) about **27,536**. The orange line starts about a year after the blue one; that's correct.
+
+### V2. Drawdown from previous high
+
+**What it shows:** how far below its record high the market was on each day. 0% = at a record; −83% = lost 83%.
+**Data:** `NQ_clean_for_tableau`. **Picture:** `poster_visuals/V2_drawdown_underwater.png`.
+
+1. New sheet → rename **V2 Drawdown**.
+2. **Date** → **Columns** → make it a timeline (Step 5.3).
+3. **Drawdown (TC)** → **Rows**.
+4. Marks drop-down → **Area**. The chart now looks like water filling down from the top.
+5. **Colour:** click **Color** → **More Colors…** → red (208, 59, 59).
+6. **Show it as %:** right-click the left axis → **Format…**. A Format panel opens on the left. On the **Axis** tab, under *Scale* → **Numbers**, choose **Percentage** and set **Decimal places = 0**.
+7. **Fix the range:** right-click the left axis → **Edit Axis…** → *Range*: choose **Fixed**, Start `-1`, End `0`. (−1 is −100%.) Title: `Drawdown (%)`.
+8. **Annotations** (as in V1): `Dot-com bust −83% (regained Aug 2016)` at 9 Oct 2002, `GFC −54%` (late 2008/early 2009), `COVID −28%` (Mar 2020), `2022 −35%` (Dec 2022), `2025 −23%` (Apr 2025).
+9. **Title:** **Drawdown from previous high: the March 2000 peak took 16 years to regain**
+10. **Check:** the lowest point is about **−83%** on **9 Oct 2002**, and the last point is about **−9%**.
+
+### V3. Calendar-year returns
+
+**What it shows:** one bar per year: up (blue) or down (red).
+**Data:** `NQ_annual_returns`. **Picture:** `poster_visuals/V3_annual_returns.png`.
+
+1. New sheet → rename **V3 Annual returns**.
+2. **Switch data source:** at the top of the Data pane, click **NQ_annual_returns**. The field list changes.
+3. Drag **Year** to **Columns**. It must be a **blue** pill that says `Year`.
+   - If it says `SUM(Year)` or is green: click its **▼** → **Dimension**, then **▼** → **Discrete**.
+4. Drag **Annual Return** to **Rows**. Bars appear. If not, set the Marks drop-down to **Bar**.
+5. Drag **Result** onto **Color**. **Edit Colors…** → **Gain** = blue, **Loss** = red.
+6. **Show as %:** right-click the left axis → **Format…** → Axis tab → Numbers → **Percentage**, 0 decimals. Do the same on the **Pane** tab, so the bar labels are % too. Axis title: `Calendar-year return (%)`.
+7. **Median line** (the "typical" year):
+   1. Drag **Full Year Return** onto **Detail** on the Marks card. This makes it available for the line. It is blank for the two part-years, so they are left out of the median.
+   2. Click the **Analytics** tab (top-left, next to Data).
+   3. Drag **Reference Line** onto the chart and drop it on the box that says **Table**.
+   4. In the window: *Value* → choose **SUM(Full Year Return)** and **Median**. *Label* → **Custom** → type `median 17%`. *Line* → grey, dashed. Click **OK**.
+8. **Labels on four bars:** right-click the 2003 bar → **Mark Label → Always Show**. Repeat for 2008, 2022 and 2023.
+9. **Mark the part-years:** annotate the 1999 bar `partial year (from Jun)` and the 2026 bar `year to date`.
+10. **Title:** **Calendar-year return: 20 of 26 full years positive, but losses cluster in runs**
+11. **Check:** 28 bars in total. Of the 26 full years (2000–2025), 20 are blue. The median line sits at about **17%**.
+
+> **Optional LOD check (good evidence of method, about 5 minutes):** make a new sheet using
+> `NQ_clean_for_tableau`. Drag **Date** to Columns (leave it as `YEAR(Date)`, blue). Drag **Year-End
+> Close (LOD)** to Rows, click its ▼ → **Measure → Minimum**. Then ▼ → **Quick Table Calculation →
+> Percent Difference**. Switch the view to a table (Show Me → text table). The numbers for 2000–2025
+> match `Annual Return` in `NQ_annual_returns.csv`. Rename the sheet **Check: annual returns (LOD)**
+> and keep it in your workbook.
+
+### V4. Rolling volatility
+
+**What it shows:** how bumpy (risky) the market was over each 21-day window. Most of the time it's calm, with sudden storms.
+**Data:** `NQ_clean_for_tableau`. **Picture:** `poster_visuals/V4_rolling_volatility_regimes.png`.
+
+1. New sheet → rename **V4 Volatility**.
+2. Click **NQ_clean_for_tableau** at the top of the Data pane.
+3. **Date** → **Columns** → timeline (Step 5.3).
+4. **Rolling Vol 21d (TC)** → **Rows**. Marks drop-down → **Line**. **Color** → blue.
+5. **Show as %:** right-click the left axis → **Format…** → Numbers → **Percentage**, 0 decimals. Title: `21-day realised volatility, annualised (%)`.
+6. **Median line:** **Analytics** tab → drag **Reference Line** → drop on **Table**. *Value* → **AGG(Rolling Vol 21d (TC))** and **Median**. *Label* → Custom → `median 18%`. *Line* → grey, dashed. **OK**.
+7. **Stress line:** drag another **Reference Line** → **Table**. *Value* → **AGG(Rolling Vol 21d (TC))**. In the second drop-down choose **Percentile → 90**. *Label* → Custom → `stress line (90th percentile) 40%`. *Line* → orange. **OK**.
+8. **Annotations** on the tallest spikes: `2000–02: 99%`, `2008: 95%`, `2020: 90%`, `2025: 58%`.
+9. **Title:** **Volatility clusters: calm regimes punctuated by short, violent storms**
+10. **Check:** the median line is at about **18%** and the stress line at about **40%**. Your line may look slightly different from the picture for a few weeks around April 2000. That's expected: Python skipped the bad price removed on 10 Apr 2000, while Tableau simply joins the day before to the day after.
+
+### V5. Fat tails: daily returns vs the bell curve
+
+**What it shows:** blue bars count how many days had each size of move. The orange line is how many there *would* be if markets followed a perfect bell curve. Far from the middle, the bars are much taller than the line: big crash and jump days happen far more often than the bell curve says.
+**Data:** `NQ_return_histogram`. **Picture:** `poster_visuals/V5_return_distribution_fat_tails.png`.
+
+1. New sheet → rename **V5 Fat tails**. Click **NQ_return_histogram** at the top of the Data pane.
+2. Drag **Return Bin Pct** to **Columns**. Click its **▼** → **Dimension**, then **▼** → **Continuous** (green).
+3. Drag **Observed Days** to **Rows**.
+4. Drag **Normal Expected Days** to **Rows** too, dropping it to the **right** of the first pill. You now see two charts, one above the other.
+5. Click the **▼** on the second pill (`SUM(Normal Expected Days)`) → **Dual Axis**. The two charts merge into one.
+6. Right-click the **right-hand** axis → **Synchronize Axis**. This is important: now both use the **same** scale. Right-click it again → untick **Show Header** to hide the duplicate numbers.
+7. The Marks card now has tabs: **All**, **SUM(Observed Days)** and **SUM(Normal Expected Days)**.
+   - Click the **Observed Days** tab → drop-down **Bar** → **Color** blue → **Size** slider a little to the left (thin bars).
+   - Click the **Normal Expected Days** tab → drop-down **Line** → **Color** orange.
+   - If Tableau coloured both with Measure Names, remove **Measure Names** from Color by dragging it off the card.
+8. **Log scale** (so you can see the tiny counts far from the middle): right-click the left axis → **Edit Axis…** → tick **Logarithmic**. *Range* → **Fixed**, Start `0.8`, and leave End at the number Tableau suggests. Title: `Number of days (log scale)`. Then repeat step 6 (**Synchronize Axis**) in case it switched off.
+9. Bottom axis: **Edit Axis…** → Title: `Daily log return (%)`.
+10. **Caption:** top menu **Worksheet → Show Caption**. Double-click the caption box under the chart → replace the text with: `117 days beyond ±3 s.d. vs 19 expected; 47 beyond ±4 s.d. vs 0.4 expected; excess kurtosis 7.1.`
+11. **Title:** **Daily returns have fat tails: extreme days are far more common than a bell curve predicts**
+12. **Check:** the line sits **below** the bars at both far ends. Some bins have no days at all, so there are gaps on the log scale. That's normal.
+
+### V6. Trend-regime scorecard
+
+**What it shows:** four little contests between "price above its one-year average" (blue) and "below it" (orange). Below the average, the market is more than twice as bumpy, and most of the worst days happen there.
+**Data:** `NQ_regime_summary`. **Picture:** `poster_visuals/V6_trend_regime_scorecard.png`.
+
+1. New sheet → rename **V6 Regime scorecard**. Click **NQ_regime_summary** at the top of the Data pane.
+2. Drag **Metric** to **Columns**. Then drag **Regime** to **Columns**, dropping it to the **right** of Metric.
+3. Drag **Value** to **Rows**. Marks drop-down → **Bar**.
+4. Drag **Regime** onto **Color**. **Edit Colors…** → **Above 252-day MA** = blue, **Below 252-day MA** = orange.
+5. Drag **Value** onto **Label**. Each bar now shows its number.
+6. **Show as %:** right-click the **SUM(Value)** pill on Rows → **Format…** → **Pane** tab → Numbers → **Percentage**, 0 decimals.
+7. **Hide the side numbers** (the labels already show them): right-click the left axis → untick **Show Header**.
+8. **Hide the repeated regime names under each bar** (the colours and legend already say it): right-click one of the "Above 252-day MA" labels under the bars → untick **Show Header**.
+9. If the metric names are squashed, drag the edge of the chart to make it wider, or right-click a metric name → **Format…** → Header → set the alignment to **wrap**.
+10. **Caption** (keep this; it stops the chart from claiming too much): **Worksheet → Show Caption** → `Volatility gap statistically significant (p < 0.001); return gap not significant (p = 0.22) and reverses after 2013, so the 252-day line is a risk signal, not a return forecast.`
+11. **Title:** **Trend regimes: below its 252-day average, risk more than doubles and most crash days occur**
+12. **Check** the labels (Above vs Below): share of days **74% vs 26%**; next-day return **13% vs −7%**; volatility **18% vs 40%**; share of worst days **13% vs 87%**.
+
+### 5.4 Done? Tidy up
+
+- **Same font everywhere:** **Format → Workbook…** → set every font to **Arial**.
+- **Light gridlines:** **Format → Lines…** → set the *Grid Lines* to light grey, or *None*.
+- **Legends:** keep the colour legend on V1, V3, V5 and V6 so colour is never the only clue.
+- **Save** (**Ctrl + S**) as `NQ1_Poster_SantiagoCruz.twbx`.
 
 ---
 
@@ -165,7 +323,7 @@ Create one worksheet per chart. Right-click the sheet tab → **Rename** (V1, V2
 1. Click the **New Dashboard** icon at the bottom.
 2. In the Size panel, choose **Fixed size → Custom**, 1400 × 1000.
 3. Drag **V1** to the top and **V4** below it.
-4. Click V1 → the small dropdown arrow → **Filters → Date** → choose a **Range of Dates**. On the filter card, click the dropdown → **Apply to Worksheets → All Using This Data Source**. Moving the slider now updates both charts.
+4. Click V1 → the small dropdown arrow → **Filters → Date** → choose a **Range of Dates**. On the filter card, click the dropdown → **Apply to Worksheets → All Using This Data Source**. Moving the slider now updates both charts. (The first three weeks of the volatility line go blank after you move the slider. That's expected, because each point needs 21 days of data before it.)
 5. Add a title: *Explore the crises: drag the date range*.
 6. Name the dashboard **Interactive: price and volatility**.
 
@@ -290,4 +448,8 @@ The brief requires 1,000 words ±10%, so aim for **900–1,100 words in total**,
 | No upload option for CSV in the browser | Open the CSV in LibreOffice Calc or Excel, save it as `.xlsx`, and upload that |
 | Annotations are missing in the browser editor | Add the labels as text boxes in the poster instead |
 | Exported images look blurry | Export from a dashboard sized 2000 × 1000 or larger, and increase the font sizes before exporting |
+| Opening `NQ1_Poster.twbx` shows a list of errors such as `missing required attribute 'dim-percentage'` or `no declaration found for element 'simple-id'` | The workbook was written for a newer Tableau than yours. Use the updated `Tableau_Workbook/NQ1_Poster.twbx` (rebuilt for older versions), or build the charts yourself with Step 5 |
+| A calculated field shows red text: "The calculation contains errors" | Check that every `(` has a matching `)`, every `[` a matching `]`, and that field names are spelt as in the Data pane (`[MA 252]` with a space, not `[MA_252]`) |
+| A (TC) line looks wrong, flat or like a staircase | `Date` is not at day level. Make it **Exact Date** and **Continuous** (Step 5.3). Then click the field's ▼ → **Compute Using → Table (across)** |
+| The Reference Line window doesn't list the field I need | The field must be in the view first. Drag it onto **Detail** on the Marks card, then add the line again |
 | Tableau Desktop will not install on Linux | Expected: use Option A (browser), or a Windows/Mac computer |

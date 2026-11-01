@@ -12,7 +12,6 @@ Run from the assessment folder:
     uv run --no-project --with pandas python build_tableau_workbook.py
 """
 
-import uuid
 import zipfile
 from pathlib import Path
 from xml.sax.saxutils import quoteattr
@@ -159,7 +158,7 @@ def build_twb(data_dir_attr: str) -> str:
             f"</relation></connection>"
             f"<aliases enabled='yes' />"
             + "".join(col_xml(*f) for f in sh["fields"])
-            + f"<layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />"
+            + f"<layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />"
             + style + "</datasource>")
 
         cols = sh["cols"] if isinstance(sh["cols"], list) else [sh["cols"]]
@@ -189,7 +188,6 @@ def build_twb(data_dir_attr: str) -> str:
         cols_xml = " / ".join(f"[{ds}].{inst(*c)}" for c in cols)
         if len(cols) > 1:
             cols_xml = f"({cols_xml})"                        # nested dimensions
-        uid = "{" + str(uuid.uuid5(uuid.NAMESPACE_URL, sh["sheet"])).upper() + "}"
         worksheets.append(
             f"<worksheet name={quoteattr(sh['sheet'])}>"
             f"<layout-options><title><formatted-text><run bold='true' fontsize='14'>{sh['title']}</run>"
@@ -203,7 +201,7 @@ def build_twb(data_dir_attr: str) -> str:
             + pane_style
             + f"</pane></panes>"
             f"<rows>[{ds}].{inst(*sh['rows'])}</rows><cols>{cols_xml}</cols></table>"
-            f"<simple-id uuid='{uid}' /></worksheet>")
+            f"</worksheet>")
         windows.append(
             f"<window class='worksheet' name={quoteattr(sh['sheet'])}><cards>"
             f"<edge name='left'><strip size='160'><card type='pages' /><card type='filters' />"
@@ -211,18 +209,16 @@ def build_twb(data_dir_attr: str) -> str:
             f"<edge name='top'><strip size='2147483647'><card type='columns' /></strip>"
             f"<strip size='2147483647'><card type='rows' /></strip>"
             f"<strip size='31'><card type='title' /></strip></edge></cards>"
-            f"<simple-id uuid='{uid}' /></window>")
+            f"</window>")
 
     return ("<?xml version='1.0' encoding='utf-8' ?>\n"
-            "<workbook original-version='18.1' source-build='2026.1.0 (20261.26.0211.1127)' "
+            "<workbook original-version='18.1' source-build='2023.1.0 (20231.23.0310.1045)' "
             "source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>"
             "<preferences><preference name='ui.encoding.shelf.height' value='24' />"
             "<preference name='ui.shelf.height' value='26' /></preferences>"
             f"<datasources>{''.join(datasources)}</datasources>"
             f"<worksheets>{''.join(worksheets)}</worksheets>"
             f"<windows source-height='30'>{''.join(windows)}</windows>"
-            "<explain-data enabled-for-viewer='true' extreme-values-enabled-for-all='true'>"
-            "<explanation-types /></explain-data>"
             "</workbook>\n")
 
 
