@@ -1,0 +1,129 @@
+Return_Bin_Pct,Series,Days
+-11.375,Observed daily returns,1.0
+-10.625,Observed daily returns,2.0
+-10.375,Observed daily returns,1.0
+-10.125,Observed daily returns,1.0
+-9.125,Observed daily returns,3.0
+-8.625,Observed daily returns,1.0
+-8.125,Observed daily returns,2.0
+-7.875,Observed daily returns,2.0
+-7.625,Observed daily returns,4.0
+-7.125,Observed daily returns,5.0
+-6.875,Observed daily returns,1.0
+-6.625,Observed daily returns,4.0
+-6.375,Observed daily returns,3.0
+-6.125,Observed daily returns,2.0
+-5.875,Observed daily returns,8.0
+-5.625,Observed daily returns,9.0
+-5.375,Observed daily returns,3.0
+-5.125,Observed daily returns,13.0
+-4.875,Observed daily returns,13.0
+-4.625,Observed daily returns,14.0
+-4.375,Observed daily returns,20.0
+-4.125,Observed daily returns,19.0
+-3.875,Observed daily returns,21.0
+-3.625,Observed daily returns,42.0
+-3.375,Observed daily returns,32.0
+-3.125,Observed daily returns,50.0
+-2.875,Observed daily returns,56.0
+-2.625,Observed daily returns,71.0
+-2.375,Observed daily returns,83.0
+-2.125,Observed daily returns,94.0
+-1.875,Observed daily returns,136.0
+-1.625,Observed daily returns,147.0
+-1.375,Observed daily returns,200.0
+-1.125,Observed daily returns,226.0
+-0.875,Observed daily returns,290.0
+-0.625,Observed daily returns,354.0
+-0.375,Observed daily returns,539.0
+-0.125,Observed daily returns,628.0
+0.125,Observed daily returns,742.0
+0.375,Observed daily returns,652.0
+0.625,Observed daily returns,546.0
+0.875,Observed daily returns,436.0
+1.125,Observed daily returns,336.0
+1.375,Observed daily returns,247.0
+1.625,Observed daily returns,179.0
+1.875,Observed daily returns,132.0
+2.125,Observed daily returns,95.0
+2.375,Observed daily returns,77.0
+2.625,Observed daily returns,62.0
+2.875,Observed daily returns,43.0
+3.125,Observed daily returns,40.0
+3.375,Observed daily returns,38.0
+3.625,Observed daily returns,20.0
+3.875,Observed daily returns,29.0
+4.125,Observed daily returns,8.0
+4.375,Observed daily returns,14.0
+4.625,Observed daily returns,10.0
+4.875,Observed daily returns,9.0
+5.125,Observed daily returns,8.0
+5.375,Observed daily returns,8.0
+5.625,Observed daily returns,5.0
+5.875,Observed daily returns,6.0
+6.125,Observed daily returns,2.0
+6.375,Observed daily returns,3.0
+6.625,Observed daily returns,3.0
+7.125,Observed daily returns,5.0
+7.375,Observed daily returns,1.0
+7.875,Observed daily returns,3.0
+8.625,Observed daily returns,1.0
+8.875,Observed daily returns,1.0
+9.125,Observed daily returns,1.0
+9.375,Observed daily returns,2.0
+9.625,Observed daily returns,1.0
+10.375,Observed daily returns,2.0
+10.625,Observed daily returns,1.0
+11.125,Observed daily returns,1.0
+11.875,Observed daily returns,1.0
+12.875,Observed daily returns,1.0
+15.375,Observed daily returns,1.0
+-5.875,Normal curve (same mean and s.d.),0.849
+-5.625,Normal curve (same mean and s.d.),1.415
+-5.375,Normal curve (same mean and s.d.),2.307
+-5.125,Normal curve (same mean and s.d.),3.68
+-4.875,Normal curve (same mean and s.d.),5.742
+-4.625,Normal curve (same mean and s.d.),8.763
+-4.375,Normal curve (same mean and s.d.),13.082
+-4.125,Normal curve (same mean and s.d.),19.102
+-3.875,Normal curve (same mean and s.d.),27.284
+-3.625,Normal curve (same mean and s.d.),38.119
+-3.375,Normal curve (same mean and s.d.),52.096
+-3.125,Normal curve (same mean and s.d.),69.642
+-2.875,Normal curve (same mean and s.d.),91.064
+-2.625,Normal curve (same mean and s.d.),116.478
+-2.375,Normal curve (same mean and s.d.),145.731
+-2.125,Normal curve (same mean and s.d.),178.349
+-1.875,Normal curve (same mean and s.d.),213.503
+-1.625,Normal curve (same mean and s.d.),250.007
+-1.375,Normal curve (same mean and s.d.),286.36
+-1.125,Normal curve (same mean and s.d.),320.838
+-0.875,Normal curve (same mean and s.d.),351.619
+-0.625,Normal curve (same mean and s.d.),376.94
+-0.375,Normal curve (same mean and s.d.),395.262
+-0.125,Normal curve (same mean and s.d.),405.426
+0.125,Normal curve (same mean and s.d.),406.772
+0.375,Normal curve (same mean and s.d.),399.212
+0.625,Normal curve (same mean and s.d.),383.239
+0.875,Normal curve (same mean and s.d.),359.873
+1.125,Normal curve (same mean and s.d.),330.553
+1.375,Normal curve (same mean and s.d.),296.993
+1.625,Normal curve (same mean and s.d.),261.015
+1.875,Normal curve (same mean and s.d.),224.387
+2.125,Normal curve (same mean and s.d.),188.687
+2.375,Normal curve (same mean and s.d.),155.203
+2.625,Normal curve (same mean and s.d.),124.874
+2.875,Normal curve (same mean and s.d.),98.278
+3.125,Normal curve (same mean and s.d.),75.658
+3.375,Normal curve (same mean and s.d.),56.973
+3.625,Normal curve (same mean and s.d.),41.965
+3.875,Normal curve (same mean and s.d.),30.236
+4.125,Normal curve (same mean and s.d.),21.31
+4.375,Normal curve (same mean and s.d.),14.691
+4.625,Normal curve (same mean and s.d.),9.907
+4.875,Normal curve (same mean and s.d.),6.535
+5.125,Normal curve (same mean and s.d.),4.216
+5.375,Normal curve (same mean and s.d.),2.661
+5.625,Normal curve (same mean and s.d.),1.643
+5.875,Normal curve (same mean and s.d.),0.992
+6.125,Normal curve (same mean and s.d.),0.586
