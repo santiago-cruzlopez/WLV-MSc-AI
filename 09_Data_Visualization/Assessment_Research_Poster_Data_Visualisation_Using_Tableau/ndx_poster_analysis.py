@@ -187,6 +187,39 @@ EPISODES = {"Dot-com bust": ("2000-01", "2003-12"), "GFC": ("2007-09", "2009-12"
             "2025 tariff shock": ("2025-01", "2025-05")}
 
 
+def export_tableau_tables(df: pd.DataFrame) -> dict:
+    """Small summary tables that make V3, V5 and V6 drag-and-drop in Tableau."""
+    ann = annual_returns(df)
+    first, last = ann.index.min(), ann.index.max()
+    partial = ann.index.isin([first, last])
+    annual = pd.DataFrame({"Year": ann.index.astype(str), "Annual_Return": ann.values,
+                           "Year_Type": np.where(partial, "Partial year", "Full year"),
+                           "Full_Year_Return": np.where(partial, np.nan, ann.values),
+                           "Result": np.where(ann.values >= 0, "Gain", "Loss")})
+
+    r = df["Log_Return"].dropna() * 100
+    edges = np.arange(-12.5, 16.75, 0.25)
+    counts, _ = np.histogram(r, bins=edges)
+    centres = edges[:-1] + 0.125
+    normal = stats.norm.pdf(centres, r.mean(), r.std()) * len(r) * 0.25
+    histogram = pd.DataFrame({"Return_Bin_Pct": centres.round(3),
+                              "Observed_Days": np.where(counts > 0, counts, np.nan),
+                              "Normal_Expected_Days": np.where(normal >= 0.5, normal.round(3), np.nan)})
+
+    t = regime_table(df)
+    labels = {"share_days": "1. Share of trading days", "ann_return": "2. Annualised next-day return",
+              "ann_vol": "3. Annualised volatility", "share_worst_1pct": "4. Share of worst 1% of days"}
+    regime = (t[list(labels)].rename(columns=labels).reset_index()
+              .melt(id_vars="regime", var_name="Metric", value_name="Value")
+              .rename(columns={"regime": "Regime"}))
+
+    tables = {"NQ_annual_returns.csv": annual, "NQ_return_histogram.csv": histogram,
+              "NQ_regime_summary.csv": regime}
+    for name, table in tables.items():
+        table.round(6).to_csv(HERE / name, index=False)
+    return tables
+
+
 def print_stats(df: pd.DataFrame) -> None:
     c, r = df["Close"], df["Log_Return"].dropna()
     years = (c.index[-1] - c.index[0]).days / 365.25
@@ -497,6 +530,7 @@ def main() -> None:
     FIG_DIR.mkdir(exist_ok=True)
     df = load_clean()
     df.round(6).to_csv(CLEAN, index_label="Date")
+    export_tableau_tables(df)
     print_stats(df)
     for fig in (fig_price, fig_drawdown, fig_annual, fig_volatility, fig_distribution, fig_regime,
                 fig_poster_layout):

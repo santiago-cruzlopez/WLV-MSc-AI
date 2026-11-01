@@ -1,0 +1,9 @@
+Regime,Metric,Value
+Above 252-day MA,1. Share of trading days,0.743017
+Below 252-day MA,1. Share of trading days,0.256983
+Above 252-day MA,2. Annualised next-day return,0.128453
+Below 252-day MA,2. Annualised next-day return,-0.070178
+Above 252-day MA,3. Annualised volatility,0.17881
+Below 252-day MA,3. Annualised volatility,0.404864
+Above 252-day MA,4. Share of worst 1% of days,0.134328
+Below 252-day MA,4. Share of worst 1% of days,0.865672

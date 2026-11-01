@@ -298,6 +298,8 @@ A back-adjusted or individual-contract series would remove roll effects, and com
 
 ## Appendix A. Tableau build notes
 
+The full click-by-click walkthrough, from creating a Tableau account to exporting the A1 PDF, is in `Tableau_Poster_Guide.md`. Three summary tables exported by the notebook make the aggregated charts drag-and-drop: `NQ_annual_returns.csv` (V3), `NQ_return_histogram.csv` (V5) and `NQ_regime_summary.csv` (V6).
+
 Connect to `NQ_clean_for_tableau.csv` (Text file). Set `Date` to Date, and `Trend_Regime` and `Data_Flag` to string dimensions. The pre-computed columns let every chart be built with drag-and-drop. The calculated fields below reproduce them inside Tableau as evidence of method; compute table calculations *along Table (across)* with `Date` at day level.
 
 | Field | Tableau formula |
