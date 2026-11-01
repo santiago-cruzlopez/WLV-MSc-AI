@@ -1,29 +1,29 @@
-Year,Annual_Return_Pct,Result,Year_Type
-1999,61.4,Gain,Partial year
-2000,-36.7,Loss,Full year
-2001,-33.3,Loss,Full year
-2002,-37.7,Loss,Full year
-2003,48.7,Gain,Full year
-2004,10.9,Gain,Full year
-2005,1.9,Gain,Full year
-2006,7.0,Gain,Full year
-2007,18.6,Gain,Full year
-2008,-42.4,Loss,Full year
-2009,53.3,Gain,Full year
-2010,19.2,Gain,Full year
-2011,2.6,Gain,Full year
-2012,16.7,Gain,Full year
-2013,35.0,Gain,Full year
-2014,18.1,Gain,Full year
-2015,8.4,Gain,Full year
-2016,6.0,Gain,Full year
-2017,31.8,Gain,Full year
-2018,-1.2,Loss,Full year
-2019,38.2,Gain,Full year
-2020,47.2,Gain,Full year
-2021,26.7,Gain,Full year
-2022,-32.5,Loss,Full year
-2023,54.4,Gain,Full year
-2024,24.7,Gain,Full year
-2025,19.9,Gain,Full year
-2026,12.1,Gain,Partial year
+Year,Annual_Return_Pct,Full_Year_Return_Pct,Result,Note
+1999,61.4,,Gain (partial year),+61% partial
+2000,-36.7,-36.7,Loss,−37%
+2001,-33.3,-33.3,Loss,−33%
+2002,-37.7,-37.7,Loss,−38%
+2003,48.7,48.7,Gain,+49%
+2004,10.9,10.9,Gain,
+2005,1.9,1.9,Gain,
+2006,7.0,7.0,Gain,
+2007,18.6,18.6,Gain,
+2008,-42.4,-42.4,Loss,−42%
+2009,53.3,53.3,Gain,+53%
+2010,19.2,19.2,Gain,
+2011,2.6,2.6,Gain,
+2012,16.7,16.7,Gain,
+2013,35.0,35.0,Gain,
+2014,18.1,18.1,Gain,
+2015,8.4,8.4,Gain,
+2016,6.0,6.0,Gain,
+2017,31.8,31.8,Gain,
+2018,-1.2,-1.2,Loss,
+2019,38.2,38.2,Gain,
+2020,47.2,47.2,Gain,
+2021,26.7,26.7,Gain,
+2022,-32.5,-32.5,Loss,−32%
+2023,54.4,54.4,Gain,+54%
+2024,24.7,24.7,Gain,
+2025,19.9,19.9,Gain,
+2026,12.1,,Gain (partial year),+12% YTD

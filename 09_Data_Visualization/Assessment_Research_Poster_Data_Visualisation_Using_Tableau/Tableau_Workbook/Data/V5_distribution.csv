@@ -1,129 +1,117 @@
-Return_Bin_Pct,Series,Days
--11.375,Observed daily returns,1.0
--10.625,Observed daily returns,2.0
--10.375,Observed daily returns,1.0
--10.125,Observed daily returns,1.0
--9.125,Observed daily returns,3.0
--8.625,Observed daily returns,1.0
--8.125,Observed daily returns,2.0
--7.875,Observed daily returns,2.0
--7.625,Observed daily returns,4.0
--7.125,Observed daily returns,5.0
--6.875,Observed daily returns,1.0
--6.625,Observed daily returns,4.0
--6.375,Observed daily returns,3.0
--6.125,Observed daily returns,2.0
--5.875,Observed daily returns,8.0
--5.625,Observed daily returns,9.0
--5.375,Observed daily returns,3.0
--5.125,Observed daily returns,13.0
--4.875,Observed daily returns,13.0
--4.625,Observed daily returns,14.0
--4.375,Observed daily returns,20.0
--4.125,Observed daily returns,19.0
--3.875,Observed daily returns,21.0
--3.625,Observed daily returns,42.0
--3.375,Observed daily returns,32.0
--3.125,Observed daily returns,50.0
--2.875,Observed daily returns,56.0
--2.625,Observed daily returns,71.0
--2.375,Observed daily returns,83.0
--2.125,Observed daily returns,94.0
--1.875,Observed daily returns,136.0
--1.625,Observed daily returns,147.0
--1.375,Observed daily returns,200.0
--1.125,Observed daily returns,226.0
--0.875,Observed daily returns,290.0
--0.625,Observed daily returns,354.0
--0.375,Observed daily returns,539.0
--0.125,Observed daily returns,628.0
-0.125,Observed daily returns,742.0
-0.375,Observed daily returns,652.0
-0.625,Observed daily returns,546.0
-0.875,Observed daily returns,436.0
-1.125,Observed daily returns,336.0
-1.375,Observed daily returns,247.0
-1.625,Observed daily returns,179.0
-1.875,Observed daily returns,132.0
-2.125,Observed daily returns,95.0
-2.375,Observed daily returns,77.0
-2.625,Observed daily returns,62.0
-2.875,Observed daily returns,43.0
-3.125,Observed daily returns,40.0
-3.375,Observed daily returns,38.0
-3.625,Observed daily returns,20.0
-3.875,Observed daily returns,29.0
-4.125,Observed daily returns,8.0
-4.375,Observed daily returns,14.0
-4.625,Observed daily returns,10.0
-4.875,Observed daily returns,9.0
-5.125,Observed daily returns,8.0
-5.375,Observed daily returns,8.0
-5.625,Observed daily returns,5.0
-5.875,Observed daily returns,6.0
-6.125,Observed daily returns,2.0
-6.375,Observed daily returns,3.0
-6.625,Observed daily returns,3.0
-7.125,Observed daily returns,5.0
-7.375,Observed daily returns,1.0
-7.875,Observed daily returns,3.0
-8.625,Observed daily returns,1.0
-8.875,Observed daily returns,1.0
-9.125,Observed daily returns,1.0
-9.375,Observed daily returns,2.0
-9.625,Observed daily returns,1.0
-10.375,Observed daily returns,2.0
-10.625,Observed daily returns,1.0
-11.125,Observed daily returns,1.0
-11.875,Observed daily returns,1.0
-12.875,Observed daily returns,1.0
-15.375,Observed daily returns,1.0
--5.875,Normal curve (same mean and s.d.),0.849
--5.625,Normal curve (same mean and s.d.),1.415
--5.375,Normal curve (same mean and s.d.),2.307
--5.125,Normal curve (same mean and s.d.),3.68
--4.875,Normal curve (same mean and s.d.),5.742
--4.625,Normal curve (same mean and s.d.),8.763
--4.375,Normal curve (same mean and s.d.),13.082
--4.125,Normal curve (same mean and s.d.),19.102
--3.875,Normal curve (same mean and s.d.),27.284
--3.625,Normal curve (same mean and s.d.),38.119
--3.375,Normal curve (same mean and s.d.),52.096
--3.125,Normal curve (same mean and s.d.),69.642
--2.875,Normal curve (same mean and s.d.),91.064
--2.625,Normal curve (same mean and s.d.),116.478
--2.375,Normal curve (same mean and s.d.),145.731
--2.125,Normal curve (same mean and s.d.),178.349
--1.875,Normal curve (same mean and s.d.),213.503
--1.625,Normal curve (same mean and s.d.),250.007
--1.375,Normal curve (same mean and s.d.),286.36
--1.125,Normal curve (same mean and s.d.),320.838
--0.875,Normal curve (same mean and s.d.),351.619
--0.625,Normal curve (same mean and s.d.),376.94
--0.375,Normal curve (same mean and s.d.),395.262
--0.125,Normal curve (same mean and s.d.),405.426
-0.125,Normal curve (same mean and s.d.),406.772
-0.375,Normal curve (same mean and s.d.),399.212
-0.625,Normal curve (same mean and s.d.),383.239
-0.875,Normal curve (same mean and s.d.),359.873
-1.125,Normal curve (same mean and s.d.),330.553
-1.375,Normal curve (same mean and s.d.),296.993
-1.625,Normal curve (same mean and s.d.),261.015
-1.875,Normal curve (same mean and s.d.),224.387
-2.125,Normal curve (same mean and s.d.),188.687
-2.375,Normal curve (same mean and s.d.),155.203
-2.625,Normal curve (same mean and s.d.),124.874
-2.875,Normal curve (same mean and s.d.),98.278
-3.125,Normal curve (same mean and s.d.),75.658
-3.375,Normal curve (same mean and s.d.),56.973
-3.625,Normal curve (same mean and s.d.),41.965
-3.875,Normal curve (same mean and s.d.),30.236
-4.125,Normal curve (same mean and s.d.),21.31
-4.375,Normal curve (same mean and s.d.),14.691
-4.625,Normal curve (same mean and s.d.),9.907
-4.875,Normal curve (same mean and s.d.),6.535
-5.125,Normal curve (same mean and s.d.),4.216
-5.375,Normal curve (same mean and s.d.),2.661
-5.625,Normal curve (same mean and s.d.),1.643
-5.875,Normal curve (same mean and s.d.),0.992
-6.125,Normal curve (same mean and s.d.),0.586
+Return_Bin_Pct,Observed_Days,Normal_Expected_Days,Note
+-12.375,,,
+-12.125,,,
+-11.875,,,
+-11.625,,,
+-11.375,1.0,,16 Mar 2020: −11.5%
+-11.125,,,
+-10.875,,,
+-10.625,2.0,,
+-10.375,1.0,,
+-10.125,1.0,,
+-9.875,,,
+-9.625,,,
+-9.375,,,
+-9.125,3.0,,
+-8.875,,,
+-8.625,1.0,,
+-8.375,,,
+-8.125,2.0,,
+-7.875,2.0,,
+-7.625,4.0,,
+-7.375,,,
+-7.125,5.0,,
+-6.875,1.0,,
+-6.625,4.0,,
+-6.375,3.0,,
+-6.125,2.0,,
+-5.875,8.0,0.849,
+-5.625,9.0,1.415,
+-5.375,3.0,2.307,
+-5.125,13.0,3.68,
+-4.875,13.0,5.742,
+-4.625,14.0,8.763,
+-4.375,20.0,13.082,
+-4.125,19.0,19.102,
+-3.875,21.0,27.284,
+-3.625,42.0,38.119,
+-3.375,32.0,52.096,
+-3.125,50.0,69.642,
+-2.875,56.0,91.064,
+-2.625,71.0,116.478,
+-2.375,83.0,145.731,
+-2.125,94.0,178.349,
+-1.875,136.0,213.503,
+-1.625,147.0,250.007,
+-1.375,200.0,286.36,
+-1.125,226.0,320.838,
+-0.875,290.0,351.619,
+-0.625,354.0,376.94,
+-0.375,539.0,395.262,
+-0.125,628.0,405.426,
+0.125,742.0,406.772,
+0.375,652.0,399.212,
+0.625,546.0,383.239,
+0.875,436.0,359.873,
+1.125,336.0,330.553,
+1.375,247.0,296.993,
+1.625,179.0,261.015,
+1.875,132.0,224.387,
+2.125,95.0,188.687,
+2.375,77.0,155.203,
+2.625,62.0,124.874,
+2.875,43.0,98.278,
+3.125,40.0,75.658,
+3.375,38.0,56.973,
+3.625,20.0,41.965,
+3.875,29.0,30.236,
+4.125,8.0,21.31,
+4.375,14.0,14.691,
+4.625,10.0,9.907,
+4.875,9.0,6.535,
+5.125,8.0,4.216,
+5.375,8.0,2.661,
+5.625,5.0,1.643,
+5.875,6.0,0.992,
+6.125,2.0,0.586,
+6.375,3.0,,
+6.625,3.0,,
+6.875,,,
+7.125,5.0,,
+7.375,1.0,,
+7.625,,,
+7.875,3.0,,
+8.125,,,
+8.375,,,
+8.625,1.0,,
+8.875,1.0,,
+9.125,1.0,,
+9.375,2.0,,
+9.625,1.0,,
+9.875,,,
+10.125,,,
+10.375,2.0,,
+10.625,1.0,,
+10.875,,,
+11.125,1.0,,
+11.375,,,
+11.625,,,
+11.875,1.0,,
+12.125,,,
+12.375,,,
+12.625,,,
+12.875,1.0,,
+13.125,,,
+13.375,,,
+13.625,,,
+13.875,,,
+14.125,,,
+14.375,,,
+14.625,,,
+14.875,,,
+15.125,,,
+15.375,1.0,,3 Jan 2001: +15.4%
+15.625,,,
+15.875,,,
+16.125,,,
+16.375,,,
