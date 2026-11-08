@@ -66,8 +66,8 @@ This module is about the Master’s Dissertation. You will learn:
 
 | Week | Topic | Milestone |
 |:----:|-------|-----------|
-| 1 | [The Master’s Dissertation](#week-1-the-masters-dissertation) | |
-| 2 | [Submitting a Research Proposal](#week-2-submitting-a-research-proposal) | |
+| 1 | [The Master’s Dissertation](#week-1-the-masters-dissertation) ✅ | Milestone 0: contact your supervisor |
+| 2 | [Submitting a Research Proposal](#week-2-submitting-a-research-proposal) | **Ethical Considerations Form due** |
 | 3 | [Preparing for Your Dissertation](#week-3-preparing-for-your-dissertation) | |
 | 4 | [Plagiarism and Referencing](#week-4-plagiarism-and-referencing) | |
 | 5 | [Becoming a Critical Reader and Writer](#week-5-becoming-a-critical-reader-and-writer) | |
@@ -140,16 +140,159 @@ All of these are available on the module’s Canvas page. Replace each `#` with 
 
 ### Week 1: The Master’s Dissertation
 
-**Learning outcomes**
+> **Status:** ✅ Completed
+>
+> **This week’s milestone:** Milestone 0, Project Commencement & Supervisor Discussion.
+>
+> **Coming up:** Ethical Considerations Form due at the end of Week 2.
+
+#### Learning outcomes
 
 1. Describe the purpose of a master’s dissertation (MLO2).
 2. Explain how master’s dissertations are evaluated (MLO2).
 3. Identify the skills needed to successfully complete a master’s dissertation (MLO2).
 4. Revise a master’s dissertation research proposal (MLO1).
 
-**Notes**
+#### Activities
 
--
+| Type | Activity | When |
+|------|----------|------|
+| 📖 Read | Chapter 1 of *Succeeding With Your Master’s Dissertation* | Early in the week |
+| 🎥 Watch | Micro-lecture: The Master’s Dissertation | Early in the week |
+| ⚖️ Ethics | Discuss the project with your supervisor and start the Ethical Considerations Form | Submit by end of Week 2 |
+| 🚩 Milestone 0 | E-mail your supervisor, introduce yourself, and share project ideas | This week |
+
+#### Summary
+
+**1. What a master’s dissertation is**
+
+- At its simplest, it is a **long, structured essay** on a topic of your choice.
+- In practice, it is an **independent piece of research**, written up within a fixed timeframe and word limit.
+- To count as research, it must be **systematic**. You must:
+  1. identify your topic;
+  2. set clearly defined objectives;
+  3. explain how you will meet them;
+  4. carry out the research;
+  5. analyse the findings;
+  6. conclude against what you set out to do, adding recommendations or implications where relevant.
+- Research gives **new insight** into a topic, or new ways of looking at or doing something.
+- Dissertations differ by subject and department. Some are literature-based, some collect data (e.g. interviews), and some create an **artefact** (e.g. software) or run an experiment. A Computer Science dissertation usually builds and tests an artefact.
+
+**2. How it is evaluated**
+
+- The dissertation is a **test of whether you can complete a research project on your own**, following a process the academic community accepts.
+- Markers look for evidence in your **chapters**, which should cover each stage of the project from start to finish. The project ends with a **presentation (viva)** where you defend your work to your supervisor and a reader.
+- Typical questions markers ask:
+  - Are the research objectives appropriate, focused, clear, and achievable?
+  - Is the research placed in context and justified?
+  - Is the student well read in the area, and is there evidence of critical thinking?
+  - Are the research methods valid and reliable?
+  - Is there an understanding of ethical issues?
+  - Have the findings been described, analysed, and synthesised?
+  - Do the conclusions follow from the findings?
+  - Have recommendations or implications been identified?
+  - What contribution does the work make?
+- **The process matters more than the result.** You don’t get marks for earth-shattering conclusions. You get marks when:
+  - your conclusions follow from your findings;
+  - your findings come from properly applied research methods;
+  - your methods were chosen because they suit your objectives;
+  - all of this is **transparent** to the marker.
+- **Answer “what” and “why” at every key point.** The *why* is what earns marks. For example: “I used **8 epochs** because I tested both fewer and more during development, and 8 gave the best results.” This shows the value wasn’t pulled out of thin air.
+
+**3. Skills and qualities you need**
+
+| Category | Skill or quality | In practice |
+|----------|------------------|-------------|
+| Generic skills | Time management | Book regular time slots, so the dissertation becomes routine rather than a task you keep putting off |
+| | Organisation | Keep a disciplined structure, plan library visits, and arrange supervisor meetings |
+| | Communication | Keep it simple, clear, and relevant |
+| | Listening | When your supervisor suggests changing something, they are telling you how to gain marks and avoid losing them |
+| | Technology | Use library databases and referencing software, and **back up your work** |
+| | Independent learning | You lead; your supervisor advises |
+| | Presentation | Practise presenting to friends and your supervisor before the viva |
+| Research skills | Writing each chapter | Proposal, abstract, introduction, literature review, methods (including ethics), findings, and conclusion, all in the language of academic discourse |
+| Personal qualities | Self-motivation | Stay curious and positive over a long period |
+| | Self-confidence | Your views on published work are valid, as long as evidence supports them |
+| | Self-centredness | Tell the people close to you that the dissertation is a priority |
+
+**4. Project ethics**
+
+- Every project must be reviewed against ethical research principles. Discuss your study with your supervisor and complete the **Ethical Considerations Form** as early as possible, by the **end of Week 2** at the latest.
+- **All projects on this programme must be Category 0**, so they don’t need approval from an ethics panel.
+- The form asks whether your project involves **human participants, data about humans, or sensitive information**. If any answer is *yes*, you must complete page 2 of the form.
+
+| Category | What it means | Ethics panel needed? |
+|----------|---------------|:--------------------:|
+| **0** | Non-hazardous, no participants, and uses only existing material that is publicly and legally available in the UK | No, and this is **required on this programme** |
+| **A** | Involves people, but isn’t hazardous to them or the researcher, and doesn’t involve vulnerable people | Yes |
+| **B** | Higher risk, e.g. covert procedures, highly confidential data, vulnerable participants, or offensive or contentious topics | Yes, and undergraduates can’t do these |
+
+> **Remember:** if your proposal changes significantly after the ethics review, tell your supervisor straight away. The changes may need a new review.
+
+#### Visual summary
+
+**The module milestones (Milestone 0 is this week):**
+
+![Dissertation milestones timeline, Weeks 1 to 16](<MD_Module_Weekly_Docs/1_Milestone_0_Project_Commencement_&_Supervisor_Discussion.png>)
+
+**The dissertation life cycle, and what markers check at each stage:**
+
+```mermaid
+flowchart LR
+    A["1. Research proposal<br/><i>What and why?</i>"] --> B["2. Literature review<br/><i>What have others done?</i>"]
+    B --> C["3. Research methods<br/><i>How, and why this way?</i>"]
+    C --> D["4. Empirical research<br/><i>Build and test the artefact</i>"]
+    D --> E["5. Analyse findings<br/><i>What do the results show?</i>"]
+    E --> F["6. Conclude<br/><i>Did I meet my objectives?</i>"]
+    F --> G["7. Submit and viva"]
+    F -. "cyclical closure:<br/>link back to the objectives" .-> A
+    E -. "conclusions must<br/>follow from findings" .-> F
+```
+
+**Which ethical category is my project in?**
+
+```mermaid
+flowchart TD
+    Q1{"Does the project involve<br/>human participants?"}
+    Q1 -- No --> Q2{"Does it use only existing material<br/>that is public and legal in the UK?"}
+    Q2 -- Yes --> Q3{"Is it non-hazardous, with<br/>no sensitive information?"}
+    Q3 -- Yes --> C0["✅ Category 0<br/>No panel needed<br/>(required on this programme)"]
+    Q3 -- No --> Talk
+    Q2 -- No --> Talk["⚠️ Talk to your supervisor<br/>and redesign towards Category 0"]
+    Q1 -- Yes --> Q4{"Covert methods, confidential data,<br/>vulnerable people, or<br/>contentious topics?"}
+    Q4 -- No --> CA["Category A<br/>Panel approval needed"]
+    Q4 -- Yes --> CB["Category B<br/>Full panel approval needed"]
+    CA --> Talk
+    CB --> Talk
+```
+
+> **Tip:** VS Code’s built-in preview doesn’t draw Mermaid diagrams. Install the *Markdown Preview Mermaid Support* extension to see them. GitHub draws them automatically.
+
+#### Related files
+
+| File | Type | What it covers | When to use it |
+|------|------|----------------|----------------|
+| [7CS077 - Week 1-Slides.pdf](<MD_Module_Weekly_Docs/7CS077 - Week 1-Slides.pdf>) | Lecture slides (26 pages) | What a dissertation is, how it is marked, the skills needed, and the life cycle | Revising the Week 1 content |
+| [1_Milestone_0_Project_Commencement_&_Supervisor_Discussion.png](<MD_Module_Weekly_Docs/1_Milestone_0_Project_Commencement_&_Supervisor_Discussion.png>) | Image | Timeline of Milestones 0 to 7 across Weeks 1 to 16 | Planning your weekly workload |
+| [Ethical_Considerations_Form_v1.1.docx](<MD_Module_Weekly_Docs/Ethical_Considerations_Form_v1.1.docx>) | Form (Word) | Project registration and ethics checklist (participants, privacy, animals, dual use) | Fill in and submit by **end of Week 2** |
+| [Ethical-Categories.pdf](<MD_Module_Weekly_Docs/Ethical-Categories.pdf>) | Guidance (1 page) | Definitions of Categories 0, A, and B | Checking that your project is Category 0 |
+| [Handbook-for-Ethical-Review-&-Approval-2025-2026.pdf](<MD_Module_Weekly_Docs/Handbook-for-Ethical-Review-&-Approval-2025-2026.pdf>) | University handbook (15 pages) | Why ethical review exists, which considerations trigger full review, and the application process | Background reading on research ethics |
+
+#### Conclusion
+
+A master’s dissertation is a test of research process, not a hunt for a ground-breaking result. If your objectives are clear, your methods are justified, your conclusions follow from your evidence, and your project is ethical, you can earn high marks even with a modest finding. These real-world cases show the same ideas:
+
+1. **Justify every choice (the “why”).** In *Attention Is All You Need* (Vaswani et al., 2017), the paper that introduced the Transformer, the authors don’t just state their model settings. They include a table of experiments that vary the number of attention heads, layer sizes, and dropout, showing the effect of each. This is the 8-epochs advice at a larger scale: evidence for each value, not just the value.
+
+2. **The process is what makes results trustworthy.** Many machine learning results have been hard to reproduce, because papers left out details such as hyperparameters, data splits, or random seeds. In response, NeurIPS, one of the largest AI conferences, introduced a reproducibility checklist for submissions in 2019. Markers apply the same test to your dissertation: could someone follow your chapters and get the same result?
+
+3. **Participants without consent are an ethics failure.** In the Facebook “emotional contagion” study (Kramer et al., 2014, *PNAS*), the news feeds of about 689,000 users were changed without their informed consent. The journal later published an editorial expression of concern. Under the university’s rules, this would be Category B, because it used covert procedures. This is why your project must have no participants.
+
+4. **Data about people is still sensitive, even when it is easy to get.** In the Cambridge Analytica scandal (2018), a personality-quiz app built by an academic collected data on up to 87 million Facebook users, most of whom had never used the app. That data was then reused for political targeting. The UK Information Commissioner’s Office fined Facebook £500,000. This is the kind of reuse that the form’s questions on “data about humans” and “privacy” are meant to catch.
+
+5. **“Publicly available” doesn’t automatically mean “ethical”.** MIT took its *80 Million Tiny Images* dataset offline in 2020, after researchers (Prabhu & Birhane) found offensive and derogatory labels in it. When you choose a public dataset for a Category 0 project, check how it was collected and labelled, and say so in your methods chapter.
+
+**Next week:** research proposals: their purpose and content, aims versus objectives, research methods, and research ethics.
 
 ---
 
