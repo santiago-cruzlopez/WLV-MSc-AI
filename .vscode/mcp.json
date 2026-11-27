@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "local-reference-manager": {
+      "type": "stdio",
+      "command": "REPLACE_WITH_MCP_SERVER_COMMAND",
+      "args": [],
+      "env": {}
+    },
+    "local-knowledge-base": {
+      "type": "stdio",
+      "command": "REPLACE_WITH_MCP_SERVER_COMMAND",
+      "args": [],
+      "env": {}
+    }
+  }
+}

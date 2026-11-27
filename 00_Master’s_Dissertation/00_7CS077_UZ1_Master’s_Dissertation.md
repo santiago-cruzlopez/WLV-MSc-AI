@@ -298,44 +298,340 @@ A master’s dissertation is a test of research process, not a hunt for a ground
 
 ### Week 2: Submitting a Research Proposal
 
-**Learning outcomes**
+> **Status:** Study week
+>
+> **This week’s milestone:** submit the Ethical Considerations Form.
+>
+> **Coming up:** roles and responsibilities of the student and supervisor, and working with feedback in Week 3.
+
+#### Learning outcomes
 
 1. Summarise the purpose and content of a research proposal (MLO2).
 2. Describe research aims and objectives, and the differences between them (MLO2).
 3. Discuss research methods and their key aspects (MLO2).
 4. Discuss research ethics, its importance, and its core principles (MLO2).
 
-**Notes**
+#### Activities
 
--
+| Type | Activity | When |
+|------|----------|------|
+| 📖 Read | Chapter 2 of *Succeeding With Your Master’s Dissertation* | Early in the week |
+| 🎥 Watch | Micro-lecture: Submitting a Research Proposal | Before preparing the proposal |
+| ✍️ Write | Draft the working title, background, aim, objectives, methods, timescale, ethics, and references | During the week |
+| ⚖️ Ethics | Complete and submit the Ethical Considerations Form | By the end of the week |
+
+#### Summary
+
+**1. Purpose of a research proposal**
+
+- A proposal sets out what you intend to investigate and how you intend to investigate it.
+- It enables the university to check academic suitability, allocate an appropriate supervisor, and address ethical concerns.
+- It gives you and your supervisor a shared focus and provides a basis for discussion.
+- A typical proposal is brief: one to three pages, depending on the module requirements.
+
+**2. Aims and objectives**
+
+| Element | Purpose | Example language |
+|---------|---------|------------------|
+| Working title | Gives the project a focused handle | “The Cost to the UK of Reducing Greenhouse Gases in Agriculture” |
+| Overall aim | States what the research will achieve | “To explore the impact of e-security breaches on customer confidence in online banking” |
+| Individual objectives | Break the aim into manageable research tasks | Identify, evaluate critically, explore, analyse, formulate, or recommend |
+
+- Narrow a general topic by adding a specific aspect, population, sector, location, or application.
+- Number the objectives and use measurable, academically appropriate action words.
+- Avoid vague terms such as “look at”, “study”, or “learn about”, because they do not establish what completion looks like.
+- If the aim is expressed as a research question, write matching sub-questions for the objectives.
+
+**3. Research methods and timescale**
+
+- A proposal usually outlines one or both of two broad approaches:
+  1. a literature review or equivalent;
+  2. empirical research that collects and analyses your own data.
+- State the literature sources you expect to use and give examples. Do not attempt a full literature review at proposal stage.
+- Include an estimate of the time required for each phase, from proposal development through to submission.
+
+**4. Ethics and support**
+
+- State whether the project raises ethical issues and explain how they will be addressed.
+- Submit the Ethical Considerations Form even when your project is Category 0.
+- Use initial reading to justify why the topic is worth studying, but keep the proposal concise.
+- Record relevant sources as you write so they can be transferred into a reference list later.
+
+#### Visual summary
+
+**From initial topic to a complete research proposal:**
+
+```mermaid
+flowchart LR
+    A["General topic"] --> B["Focused aspect"]
+    B --> C["Working title"]
+    C --> D["Background and rationale"]
+    D --> E["Overall aim or research question"]
+    E --> F["Numbered objectives"]
+    F --> G["Research methods"]
+    G --> H["Timescale and milestones"]
+    H --> I["Ethical issues and references"]
+```
+
+**Writing the overall aim:**
+
+```mermaid
+flowchart TD
+    A["Choose a research area"] --> B["Add context and focus"]
+    B --> C["Join the ideas in one sentence"]
+    C --> D{"Institution prefers a question?"}
+    D -- Yes --> E["Convert the aim into a central research question"]
+    D -- No --> F["Write a formal aim beginning with 'To...'"]
+```
+
+#### Related files
+
+| File | Type | What it covers | When to use it |
+|------|------|----------------|----------------|
+| [7CS077 - Week 2 Slides.pdf](<MD_Module_Weekly_Docs/7CS077 - Week 2 Slides.pdf>) | Lecture slides | Research proposals, aims, objectives, methods, ethics, and timescales | Revising the proposal format |
+| [Ethical_Considerations_Form_v1.1.docx](<MD_Module_Weekly_Docs/Ethical_Considerations_Form_v1.1.docx>) | Form (Word) | Project registration and ethics checklist | Complete and submit by the end of Week 2 |
+
+#### Conclusion
+
+A strong research proposal is focused, brief, and evidence-informed. It explains **what** the project will do and **why** that project is worth doing, while showing how the aims will be achieved, how long it will take, and whether any ethical issues need attention.
+
+**Next week:** the roles and responsibilities of student and supervisor, how to prepare for supervision meetings, and how to apply feedback.
+
+---
 
 ---
 
 ### Week 3: Preparing for Your Dissertation
 
-**Learning outcomes**
+> **Status:** Study week
+>
+> **This week’s milestone:** begin working towards Milestone 2, Abstract & Introduction.
+>
+> **Coming up:** plagiarism and referencing in Week 4.
+
+#### Learning outcomes
 
 1. Explain the roles and responsibilities of both student and supervisor (MLO2).
 2. Apply tutor feedback to your project and thesis (MLO2).
 3. Discuss potential issues with research projects, and their solutions (MLO2).
 
-**Notes**
+#### Activities
 
--
+| Type | Activity | When |
+|------|----------|------|
+| 📖 Read | Chapter 3 of *Succeeding With Your Master’s Dissertation* | Early in the week |
+| 🗂️ Plan | Create a dissertation template and a timetable for the core activities | This week |
+| 🤝 Meet | Arrange and prepare for supervision meetings | Before and throughout the project |
+| ✍️ Write | Start the abstract and Introduction chapter for Milestone 2 | Work towards completion in Week 4 |
+| 💬 Discuss | Identify project risks and ask your supervisor for specific guidance | During supervision |
+
+#### Summary
+
+**1. Build a consistent routine**
+
+- Work in a comfortable place and keep a regular dissertation schedule.
+- Complete a little work often rather than leaving everything until the final weeks.
+- Set one achievable goal for each writing session.
+- Create a dissertation template with sections for the chapters, so progress is easy to review.
+
+**2. Student and supervisor responsibilities**
+
+| Role | Core responsibilities |
+|------|-----------------------|
+| Student | Take the lead, follow the guidelines, agree a topic and timetable, arrange meetings, submit work, ask questions, and produce original work |
+| Supervisor | Advise on research suitability, explain the required standard, communicate regularly, give constructive and timely feedback, and warn of a possible failure |
+
+- Supervision is a partnership based on reciprocity and mutual respect.
+- The supervisor acts as an expert guide and critical friend: questions are intended to improve the work, not to catch the student out.
+- Students must arrive with work, identify areas requiring advice, and take corrective action.
+
+**3. Prepare for and use supervision meetings**
+
+- Explain the topic, overall aim, objectives, rationale, and working title.
+- Send work-in-progress to the supervisor before the meeting.
+- Identify specific questions and areas for discussion in advance.
+- Summarise the latest work during the meeting and record decisions and actions.
+- If a meeting cannot be attended, notify the supervisor as early as possible.
+
+**4. Apply feedback using the 5Cs**
+
+Good feedback should be:
+
+- **Clear:** easy to understand;
+- **Concise:** directly relevant;
+- **Consistent:** compatible with previous advice;
+- **Convenient:** delivered at a useful time and format;
+- **Constructive:** identifies strengths, weaknesses, and the next action.
+
+Summarise what went well, what needs improvement, and what you will change. Ask for clarification if any feedback remains unclear.
+
+**5. Anticipate common problems**
+
+- Use a template and timetable if you do not know where to start.
+- Search journals, conference papers, theses, and other specialist sources when literature is difficult to find.
+- Aim for a balanced chapter structure rather than guessing a fixed length.
+- Treat criticism as a way to defend or improve the work.
+- Start early and maintain a timetable to avoid last-minute submission pressure.
+- Expect progress and confidence to vary: dissertation work is both an academic and an emotional journey.
+
+#### Visual summary
+
+**Milestone 2 — the Abstract and Introduction**
+
+```mermaid
+flowchart LR
+    A["Introduce the research area"] --> B["Outline the problem or question"]
+    B --> C["Explain what others have done"]
+    C --> D["Explain what this project will do"]
+    D --> E["State the aims and objectives"]
+    E --> F["Explain the value and structure of the work"]
+```
+
+**The supervision feedback loop:**
+
+```mermaid
+flowchart TD
+    A["Prepare work and questions"] --> B["Meet or send work to the supervisor"]
+    B --> C["Receive feedback"]
+    C --> D["Summarise the 5Cs"]
+    D --> E["Make specific improvements"]
+    E --> F["Submit updated work"]
+    F --> B
+```
+
+#### Related files
+
+| File | Type | What it covers | When to use it |
+|------|------|----------------|----------------|
+| [7CS077 - Week 3 Slides.pdf](<MD_Module_Weekly_Docs/7CS077 - Week 3 Slides.pdf>) | Lecture slides | Supervision, feedback, working routines, and project problems | Preparing for supervision and Milestone 2 |
+
+#### Conclusion
+
+The dissertation is led by the student and supported by the supervisor. A useful supervision relationship depends on preparation, regular communication, respect, and the willingness to act on specific feedback. Milestone 2 should give the project and its Introduction clear, documented direction.
+
+**Next week:** plagiarism, Harvard referencing, in-text citations, and reference lists.
+
+---
 
 ---
 
 ### Week 4: Plagiarism and Referencing
 
-**Learning outcomes**
+> **Status:** Study week
+>
+> **This week’s milestone:** complete Milestone 2, Abstract & Introduction.
+>
+> **Coming up:** critical reading, synthesis, and evaluating academic arguments in Week 5.
+
+#### Learning outcomes
 
 1. Explain plagiarism and its consequences (MLO2).
 2. Apply referencing to your academic writing (MLO2).
 3. Successfully apply a referencing tool to your dissertation (MLO2).
 
-**Notes**
+#### Activities
 
--
+| Type | Activity | When |
+|------|----------|------|
+| 📖 Read | Chapter 4 of *Succeeding With Your Master’s Dissertation* | Early in the week |
+| 🎥 Watch | Micro-lecture: Plagiarism and Referencing | Before writing or revising the dissertation |
+| ✍️ Practice | Add Harvard in-text citations to sample summaries and quotations | During the week |
+| 🧰 Configure | Set up a referencing tool and update it whenever you cite a source | During research and writing |
+| 🚩 Milestone 2 | Complete the abstract and Introduction chapter | By the end of the week |
+
+#### Summary
+
+**1. Plagiarism**
+
+Plagiarism means presenting someone else’s words or ideas as your own without clear acknowledgement. It includes:
+
+- copying whole paragraphs, sentences, or part of a sentence;
+- copying text without quotation marks;
+- citing a source but presenting direct wording as a paraphrase;
+- taking someone else’s ideas without identifying the source;
+- reusing your own previously submitted work without acknowledgement, known as self-plagiarism.
+
+Turnitin is a similarity checker rather than a final judgment of plagiarism. The key is to provide clear evidence of what is your own analysis and what comes from another author.
+
+**2. Referencing**
+
+Referencing normally appears in two places:
+
+| Location | Purpose |
+|----------|---------|
+| In the body | Identify and support every use of another source through an in-text citation |
+| At the end | Give full details of every cited source in a Reference list |
+
+- A bibliography may include works read but not explicitly cited.
+- Referencing applies to books, journal articles, reports, websites, videos, photographs, software, artwork, and other works.
+- The University of Wolverhampton uses the **Harvard author-date style**.
+
+**3. In-text citations**
+
+| Use | Harvard example |
+|-----|-----------------|
+| Direct citation | Atkins (2020) argues that pacifists oppose all warfare |
+| Indirect citation | Pacifists oppose all forms of warfare (Atkins, 2020) |
+| Several sources | Air travel changed rapidly (Boulder, 2014; Appleston, 2015; Ripley, 2017) |
+| Several works by one author | Eastwood (2018; 2020) |
+| Same-author works in one year | Thomson (2020a; 2020b) |
+| Source cited within another source | MacFarlane (1978, cited in Walker, 2020) |
+| Direct quotation | Stewart (2021, p. 10) warns that universities “must provide formal professional development” |
+
+- Paraphrase by explaining a source in your own words.
+- Use quotation marks or an indented block for exact wording.
+- Include a page number for direct quotations.
+- Do not overquote: use your own voice to explain and evaluate the evidence.
+
+**4. Maintaining a Reference list**
+
+- Update the Reference list whenever you cite a source.
+- Record the author or creator, publication year, title, publisher or website, and required page or URL details.
+- Follow the university template carefully: small formatting errors can cost easy marks.
+- Use the library’s referencing resources and a referencing tool to manage sources consistently.
+
+#### Visual summary
+
+**Academic integrity workflow:**
+
+```mermaid
+flowchart TD
+    A["Read a source"] --> B{"What will you use?"}
+    B -- Own summary --> C["Write in your own words"]
+    B -- Exact words --> D["Use quotation marks or a block quote"]
+    B -- Someone else's idea --> E["Identify the original author"]
+    C --> F["Add the Harvard in-text citation"]
+    D --> F
+    E --> F
+    F --> G["Add full details to the Reference list"]
+    G --> H["Check the final work with Turnitin"]
+```
+
+**What belongs in each location:**
+
+```mermaid
+flowchart LR
+    A["Source"] --> B["Body of dissertation"]
+    A --> C["Reference list"]
+    B --> D["Author and year"]
+    B --> E["Page number for quotations"]
+    C --> F["Full publication details"]
+```
+
+#### Related files
+
+| File | Type | What it covers | When to use it |
+|------|------|----------------|----------------|
+| [7CS077 - Week 4 Slides.pdf](<MD_Module_Weekly_Docs/7CS077 - Week 4 Slides.pdf>) | Lecture slides | Plagiarism, referencing, Harvard citations, and reference lists | Revising academic integrity and citation methods |
+| [Ethical_Considerations_Form_v1.1.docx](<MD_Module_Weekly_Docs/Ethical_Considerations_Form_v1.1.docx>) | Form (Word) | Ethics declaration and project category | Verifying that project details match the proposal |
+
+#### Conclusion
+
+Referencing is more than a final administrative task: it records your reading, gives credit to other researchers, supports your arguments, and prevents plagiarism. Complete the Reference list as you research, use Harvard citations consistently, and reserve quotations for moments where exact wording adds value.
+
+**Next week:** critical reading and writing, including synthesising review questions and evaluating academic arguments.
+
+---
 
 ---
 
